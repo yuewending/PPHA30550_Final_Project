@@ -15,6 +15,14 @@ The targets of this project is to understand the data correlations between perfo
 
 Crime rates are obtained at three levels (resolutions): state, city and district.
 
-* **Sate** crime rate
+* **State** crime rates are from **Uniform Crime Reporting (UCR) Statistics** https://www.ucrdatatool.gov/ with the "state and national estimates" data portal for the year 2014. The CSV formatted raw data file is downloaded manually.
+
+* **City** crime rates are also from **URC Statistics** https://www.ucrdatatool.gov/ with the "Local law enforcement agencies" data portal for the year 2014. Cities of four states (NY, MA, CA, IL) are used for this study. The CSV formatted raw data file is downloaded manually.
+
+* **District** crime rates are obtained for four cities (New York City, Chicago, Boston, Los angeles) with different city data portals.
+  * New York City
+  * Chicago
+  * Boston
+  * Los angeles
 
 ### Step 1: Obtaining List of US High Schools
