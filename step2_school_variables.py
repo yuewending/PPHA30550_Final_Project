@@ -54,14 +54,14 @@ def parse_school_page(link):
 
 
 # read school list
-with open('school_links.txt', 'r') as f:
+with open('data/school_links.txt', 'r') as f:
     school_links = f.read().split('\n')
 
 # define keys for csv file
 keys = ['Name', 'Address', 'Zipcode', 'Science', 'Math', 'English', 'College', 'Progress']
     
 # dump as csv file
-f = open('school_performance.csv', 'w', 0)
+f = open('data/school_performance.csv', 'w', 0)
 f.write("'" + ("','").join(keys) + "'")
 
 # loop over all schools

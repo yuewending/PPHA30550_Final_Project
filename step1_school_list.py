@@ -34,5 +34,5 @@ for page in pages:
     
 # dump out the result
 
-with open('school_links.txt', 'w') as f:
+with open('data/school_links.txt', 'w') as f:
     f.write(("\n").join(school_links))
