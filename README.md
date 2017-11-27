@@ -7,6 +7,14 @@ The targets of this project is to understand the data correlations between perfo
 
 ### Data sources:
 
-*** Performances of High Schools ***
+#### Performances of High Schools
+
+* Data of high schools are from the website https://www.greatschools.org/, which is a nonprofit project helps parents to choose high schools for their children by providing different indicators of school qualities. The information include basic profile (name, address, level ...), academic reports (scores, graduation ratio, attending college ratio ...) and other school climate data (incomes, races, ...).
+
+#### Crime Rates
+
+Crime rates are obtained at three levels (resolutions): state, city and district.
+
+* **Sate** crime rate
 
 ### Step 1: Obtaining List of US High Schools
