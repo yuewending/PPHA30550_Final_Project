@@ -33,7 +33,7 @@ The list can be obtained via its search engine via the GET method. (https://www.
 ```
 step1_school_list.py
 ```
-And this code is to finish three tasks:
+And this code is to finish four tasks:
 * Get the number of pages from the search
 * Download all HTML pages
 * Obtain school links based on the CSS class name
@@ -41,4 +41,21 @@ And this code is to finish three tasks:
 
 ### Step 2: Download School Performace Data
 
-### Step 3: 
+On each page, the variables are within DIV elements with different CSS class names. We checked the source code of the web page, and extract the information based on such characteristics. The PYTHON code is written looping over all links and extract the information to make a CSV table.
+```
+step1_school_list.py
+```
+And this code is to finish three tasks:
+* Download a web page from links in **data/school_links.txt**
+* Parse the web page and find all variables that we need
+* Write out variables in the CSV table format at **data/school_performance.csv**.
+
+### Step 3: Process of State Crime Data and Correlation Analysis
+
+Download the raw data file and save it at **data/crime_states.csv**
+
+### Step 4: Process of City Crime Data and Correlation Analysis
+
+Download the raw data files and save them at **data/crime_XX.csv** (XX are for CA, MA, NY, IL)
+
+### Step 5: Process of District Crime Data and Correlation Analysis
