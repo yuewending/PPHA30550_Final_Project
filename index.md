@@ -11,9 +11,9 @@ Students’ decisions making process on future education is influenced by a comb
 
 ## Data Preparation
 
-## Performance Data of High Schools
+### Performance Data of High Schools
 
-The performance data are from several different portals but they are all from [a][Chicago Public Schools (CPS)] originally. CPS assign each school a unique **School ID** in all different data sets and studies, so it helps us combine variables from multiple files by matching the **School ID**.
+The performance data are from several different portals but they are all from [Chicago Public Schools (CPS)](http://www.cps.edu/) originally. CPS assign each school a unique **School ID** in all different data sets and studies, so it helps us combine variables from multiple files by matching the **School ID**.
 
 
 
