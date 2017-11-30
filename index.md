@@ -11,7 +11,7 @@ Students’ decisions making process on future education is influenced by a comb
 
 ## Data Preparation
 
-The scripts that were used to prepare all data set areput in this folder, and data files are stored in the [`data`](https://github.com/yuewending/PPHA30550_Final_Project/tree/master/data) folder.
+The scripts that were used to prepare all data set are put in this folder, and data files are stored in the [`data`](https://github.com/yuewending/PPHA30550_Final_Project/tree/master/data) folder.
 
 ### Performance Data of High Schools
 
@@ -49,16 +49,29 @@ The Python script was written to obtain the data. The URL is in the format "`htt
 
 CPS provides many useful data sets via its [School Data](http://cps.edu/SchoolData/Pages/SchoolData.aspx) page. These data sets are provided in Excel format. We downloaded datasheet and use Python/Pandas to extract the columns that we need, as well as the School ID column for matching. We used three files in this study with variables: **"11th Grade ACT Scores", "5-year Graduation Percentages" and "After 2-Year College Enrollment Percentages".**
 
-
-
 **Step:** run the python script "`query_act.py`", "`query_graduation.py`","`query_college.py`" in this folder
 
 **Output files:** 
-  1. `raw_[XXX].xls` The raw data downloaded from CPS.
-  2. `refined_[XXX].csv` The refined data file containing target variables only.
+  1. `data/raw_[XXX].xls` The raw data downloaded from CPS.
+  2. `data/refined_[XXX].csv` The refined data file containing target variables only.
 
 
-### Crime Rates
+### Crime Data
+
+Crime data are from [Chicago Data Portal](https://data.cityofchicago.org). We downloaded the data sets for 2016 and 2017 to cover the 2016 school year. Data sets are in CSV file, and contains 268520 criminal cases and 22 variables. In this study, we only use **"Case ID", "Crime Type", "Latitude" and "Longitude" **.
+
+The key to this project is matching the crime data to schools to reflect the safety conditions of the neighborhood. Here we used the number of cases within 1km distance to the school as the variable. Therefore, We mapped the criminal cases to schools with their latitudes and longitude. The python script is provided to download the raw data and map them to the schools.
+
+**Step:** run the python script "`map_crime.py`" in this folder
+
+**Output files:** 
+  1. `data/crime_2016.csv` Raw data file for crimes in 2016
+  2. `data/crime_2017.csv` Raw data file for crimes in 2017
+  3. `data/refined_crime_sy2016.csv` Data set with criminal cases in 2016-2017 school year
+  4. `data/school_crimes.csv` Mapping files for criminial cases and schools.
+  5. `data/crime_types.csv` Types of criminal cases and corresponding IDs.
+
+The `school_crimes.csv` file contains 4 columns: **"Crime ID", "Crime Type", "School ID", and "Distance".** Note that one case may be matched to multiple schools. Overall, 351644 relations were found, and 
 
 
 
