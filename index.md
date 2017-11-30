@@ -1,5 +1,3 @@
-# How Neighborhood Safety Affect High School Performances?
-Final Project of Data Anaysis for Course PPHA30550
 
 **Students:** Xiaofan Liu (#1214xxxx) and Yuewen Ding (#12149112)
 
@@ -71,9 +69,16 @@ The key to this project is matching the crime data to schools to reflect the saf
   4. `data/school_crimes.csv` Mapping files for criminial cases and schools.
   5. `data/crime_types.csv` Types of criminal cases and corresponding IDs.
 
-The `school_crimes.csv` file contains 4 columns: **"Crime ID", "Crime Type", "School ID", and "Distance".** Note that one case may be matched to multiple schools. Overall, 351644 relations were found, and 
+The `school_crimes.csv` file contains 4 columns: **"Crime ID", "Crime Type", "School ID", and "Distance".** Note that one case may be matched to multiple schools. Overall, 351644 relations were found, and 184365 cases were happened with 1km of schools.
+
+### Finalize the Data Table
+
+Different data sets for school performances were merged by School IDs, and the numbers of criminal cases happend in each school's neighbor were counted and added as a new column to the school data. Therefore, finally we obtained a single table representing the data to be analyzed. Each row of the table is the information of a school, while each column is a variable for either school performance or safety.
+
+**Step:** run the python script "`finalize_data.py`" in this folder
+
+**Output files:** `data/data_table.csv`
 
 
 
-### Step 1: Obtaining List of US High Schools
-
+## Data Analysis
