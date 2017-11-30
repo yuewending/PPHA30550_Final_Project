@@ -19,18 +19,37 @@ The performance data are from several different portals but they are all from [C
 
 #### High School Progress Report Cards
 
-This is an annual report from each CPS high school, including the summary how the school is doing. However, most of the variables were given as ranks or percentiles, which is not easily to be used as a straightforward quantative indicators. We use the data set to extract the basic information of the schools: **Schoo ID, Name, Latitude, Longitude.** Another variable we use from it is the safety assessment obtained from parents/students survey. The safety descriptions are in the options of "VERY WEAK", "WEAK", "NEUTRAL", "STRONG" and "VERY STRONG", which will be converted into numbers 1~5, and the higher the better safety assessment.
+This is an annual report from each CPS high school, including the summary how the school is doing. However, most of the variables were given as ranks or percentiles, which is not easily to be used as a straightforward quantative indicators. We use the data set to extract the basic information of the schools: **Schoo ID, Name, Latitude, Longitude.** Another variable we use from it is the **"Safety Level"** obtained from parents/students survey. The safety descriptions are in the options of "VERY WEAK", "WEAK", "NEUTRAL", "STRONG" and "VERY STRONG", which will be converted into numbers 1~5, and the higher the better safety assessment.
 
 **Step:** run the python script "`query_progress.py`" in this folder
 
 **Output files:** 
-  1. `raw_progress.csv` The raw data downloaded via Chicago Data Portal.
-  2. `refined_progress.csv` The refined data file containing target variables only.
-  3. `school_id.csv` an one-column list containing all School IDs.
+  1. `data/raw_progress.csv` The raw data downloaded via Chicago Data Portal.
+  2. `data/refined_progress.csv` The refined data file containing target variables only.
+  3. `data/school_id.csv` an one-column list containing all School IDs.
+  
+  
+  
+#### School Ratings
+
+[School Quality Rating Policy (SQRP)](http://cps.edu/Performance/Pages/PerformancePolicy.aspx) is an important indicator to assess the shcool performance. However, there's no direct data portal or formatted files can be found. The rating can be only seen from the pages for each school on CPS website. The rating are "Level 1+", "Level 1", "Level 2+", "Level 2", "Level 3", from the best to the worst. These ratings were converted to numbers 1 to 5, and the higher the better. (5 means Level 1+).
+
+The Python script was written to obtain the data. The URL is in the format "`http://schoolinfo.cps.edu/schoolprofile/SchoolDetails.aspx?SchoolId=[School ID]`".
+
+**Step:** run the python script "`query_rating.py`" in this folder
+
+**Input file:** `data/school_id.csv` Used to provide the list of School IDs
+
+**Output files:** . `data/ratings.csv` The result file contains school IDs and ratings (**Level**)
+
+
+
 
 #### High School Assessment Reports and Metrics
 
 CPS provides many useful data sets via its [School Data](http://cps.edu/SchoolData/Pages/SchoolData.aspx) page. These data sets are provided in Excel format. We downloaded datasheet and use Python/Pandas to extract the columns that we need, as well as the School ID column for matching. We used three files in this study with variables: **"11th Grade ACT Scores", "5-year Graduation Percentages" and "After 2-Year College Enrollment Percentages".**
+
+
 
 **Step:** run the python script "`query_act.py`", "`query_graduation.py`","`query_college.py`" in this folder
 
