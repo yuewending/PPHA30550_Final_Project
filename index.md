@@ -1,4 +1,4 @@
-# Correlation Between Performance and Safety of High Schools
+# How Neighborhood Safety Affect High School Performances?
 Final Project of Data Anaysis for Course PPHA30550
 
 **Students:** Xiaofan Liu (#1214xxxx) and Yuewen Ding (#12149112)
@@ -9,9 +9,9 @@ Final Project of Data Anaysis for Course PPHA30550
 
 Students’ decisions making process on future education is influenced by a combination of factors, including but not limited to their past academic achievements, quality of schools, interests and external environment. The key question for policy makers is how we could improve the education environment in the most cost-effective way. Based on a survey conducted in Ohio, safety is the top one concern when choosing schools for their children. It is important to figure out following questions: Does safety (crime rate nearby the location of a school) affect school performances that are considered for choices making? If so, to what extent? Does it have the same effect on students in different aspects (such as ACT score, college enrollment) or by different types of crimes? The targets of this project is to understand the data correlations between performances Chicago high schools and the safety (crime rates) of their locations. The study is conducted based on the school profiles and crime records from chicago data portals.
 
-### Data sources:
+## Data Preparation
 
-#### Performances of High Schools
+### Performances of High Schools
 
 
 
