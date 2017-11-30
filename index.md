@@ -11,7 +11,7 @@ Students’ decisions making process on future education is influenced by a comb
 
 ## Data Preparation
 
-The scripts that were used to prepare all data set areput in this folder, and data files are stored in the [`data`](https://github.com/yuewending/PPHA30550_Final_Project/data/) folder.
+The scripts that were used to prepare all data set areput in this folder, and data files are stored in the [`data`](https://github.com/yuewending/PPHA30550_Final_Project/tree/master/data) folder.
 
 ### Performance Data of High Schools
 
