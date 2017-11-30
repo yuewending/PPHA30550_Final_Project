@@ -11,6 +11,8 @@ Students’ decisions making process on future education is influenced by a comb
 
 ## Data Preparation
 
+The scripts that were used to prepare all data set areput in this folder, and data files are stored in the [`data`](https://github.com/yuewending/PPHA30550_Final_Project/data/) folder.
+
 ### Performance Data of High Schools
 
 The performance data are from several different portals but they are all from [Chicago Public Schools (CPS)](http://www.cps.edu/) originally. CPS assign each school a unique **School ID** in all different data sets and studies, so it helps us combine variables from multiple files by matching the **School ID**.
