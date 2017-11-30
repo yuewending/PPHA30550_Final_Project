@@ -28,15 +28,15 @@ This is an annual report from each CPS high school, including the summary how th
   2. `refined_progress.csv` The refined data file containing target variables only.
   3. `school_id.csv` an one-column list containing all School IDs.
 
-#### Avarge ACT Scores
+#### High School Assessment Reports and Metrics
 
-We downloaded datasheet (Excel format) containing averaged scores of the standard ACT exams at the school level (2002~2016). Only the columns "School ID", "Year" and "Composite Score" are extracted for analysis.
+CPS provides many useful data sets via its [School Data](http://cps.edu/SchoolData/Pages/SchoolData.aspx) page. These data sets are provided in Excel format. We downloaded datasheet and use Python/Pandas to extract the columns that we need, as well as the School ID column for matching. We used three files in this study with variables: **"11th Grade ACT Scores", "5-year Graduation Percentages" and "After 2-Year College Enrollment Percentages".**
 
-**Step:** run the python script "`query_act.py`" in this folder
+**Step:** run the python script "`query_act.py`", "`query_graduation.py`","`query_college.py`" in this folder
 
 **Output files:** 
-  1. `raw_act.xls` The raw data downloaded from CPS.
-  2. `refined_act.csv` The refined data file containing target variables only.
+  1. `raw_[XXX].xls` The raw data downloaded from CPS.
+  2. `refined_[XXX].csv` The refined data file containing target variables only.
 
 
 ### Crime Rates
