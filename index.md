@@ -197,3 +197,9 @@ Total_Assaults | 0.2278 | 0.115 | 1.987 | 0.049 | 0.001 | 0.455
 Total_Robberies | -0.0710 | 0.088 | -0.809 | 0.420 | -0.245 | 0.103
 Total_Weapon_Violations | 0.1251 | 0.140 | 0.894 | 0.373 | -0.152 | 0.402
 Total_Homicides | 0.0288 | 0.695 | 0.041 | 0.967 | -1.348 | 1.406
+
+## Conclusions
+
+In this project, we map crime records to high schools based on the distances between the two locations. By this method we can assess the regional safety for the neighborhoods that the schools are located. Then we combine the safety indicators with two different data sources of school performances: (1) SQRP ratings and survey safety level from School Progress Report Cards and (2) scores and metrics from Chicago Public School database.OLS regression were done for the performance variables on the numbers of total crimes and different types of crimes within 0.5km of the schools. The results were presented and explained.
+
+Overall, local regional safety has a statistically significant impact to the performances of high schools. The safer the neighborhood is, the better the school will perform. One the one hand, a safe neighborhood can provide children a comfortable environment for study. On the other hand, good neighborhoods usually have more rich or well educated families, whose children usually perform better. Among all types of crime, we found that battery is the most significant impact to the school performance, probably because there is some correlations between battery crimes and young people.
