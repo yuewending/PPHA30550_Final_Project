@@ -62,7 +62,7 @@ for index_c, crime in crimes.iterrows():
         school_crime = (school['School_Latitude'], school['School_Longitude'])
         dist = distance(coord_crime, school_crime)
         
-        if dist < 1.0:
+        if dist < 0.5:
             crime_type.append(itype)
             crime_id.append(crime['Case Number'])
             school_id.append(school['School_ID'])
@@ -73,5 +73,6 @@ for index_c, crime in crimes.iterrows():
         
         df = pd.DataFrame({'Crime_Type': crime_type, 'School_ID': school_id, 'Crime_ID': crime_id, 'Distance': distances})
         df.to_csv('data/school_crimes.csv', index=False)
+        
 
-
+pd.DataFrame({'Type ID': range(len(type_crime)), 'Type': type_crime}).to_csv('data/crime_types.csv', index=False)
