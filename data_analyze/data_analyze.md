@@ -1,4 +1,8 @@
 
+# Data Analysis for School Performance and Neighborhood Safety
+
+### 1 Import required python packages
+
 
 ```python
 #Prepare the plotting tool
@@ -12,18 +16,28 @@ import statsmodels.api as sm
 import statsmodels.formula.api as smf
 import statsmodels.regression.mixed_linear_model as sm_mlm
 
-#Import the data that has been prepared
+#Dataframe support
 import pandas as pd
+```
+
+### 2 Load data and overview
+
+
+```python
+#Import the data that has been prepared
+#Only part of column variables are needed
 data = pd.read_csv('data/data_table.csv', usecols=[
         'Short_Name', 'Level', 'Safety_Level', 'ACT_Score', 'Graduation_Pct', 'College_Enrollment_Pct',
         'Total_Crimes', 'Total_Thefts', 'Total_Batteries', 'Total_Assaults',
-        'Total_Robberies', 'Total_Weapon_Violations', 'Total_Homicides'])
+        'Total_Robberies', 'Total_Weapon_Violations', 'Total_Homicides',
+        'School_Latitude', 'School_Longitude'])
 
+#Remove outliers with mask
 mask = (data['ACT_Score']<25) & (data['Total_Crimes']<8000)
 data = data[mask]
 
-#Display the first 20 records
-data.loc[0:20]
+#Display of the first 20 records
+data.head(20)
 ```
 
 
@@ -49,6 +63,8 @@ data.loc[0:20]
       <th></th>
       <th>Short_Name</th>
       <th>Safety_Level</th>
+      <th>School_Latitude</th>
+      <th>School_Longitude</th>
       <th>Total_Crimes</th>
       <th>Total_Thefts</th>
       <th>Total_Batteries</th>
@@ -67,6 +83,8 @@ data.loc[0:20]
       <th>0</th>
       <td>MULTICULTURAL HS</td>
       <td>2.0</td>
+      <td>41.835282</td>
+      <td>-87.735283</td>
       <td>397.0</td>
       <td>59.0</td>
       <td>89.0</td>
@@ -83,6 +101,8 @@ data.loc[0:20]
       <th>2</th>
       <td>NOBLE - HANSBERRY HS</td>
       <td>2.0</td>
+      <td>41.734442</td>
+      <td>-87.650987</td>
       <td>1840.0</td>
       <td>282.0</td>
       <td>390.0</td>
@@ -99,6 +119,8 @@ data.loc[0:20]
       <th>3</th>
       <td>URBAN PREP - WEST HS</td>
       <td>1.0</td>
+      <td>41.862540</td>
+      <td>-87.660107</td>
       <td>1741.0</td>
       <td>455.0</td>
       <td>309.0</td>
@@ -115,6 +137,8 @@ data.loc[0:20]
       <th>4</th>
       <td>AIR FORCE HS</td>
       <td>2.0</td>
+      <td>41.828145</td>
+      <td>-87.632757</td>
       <td>1124.0</td>
       <td>220.0</td>
       <td>253.0</td>
@@ -131,6 +155,8 @@ data.loc[0:20]
       <th>5</th>
       <td>PHILLIPS HS</td>
       <td>2.0</td>
+      <td>41.823880</td>
+      <td>-87.619796</td>
       <td>2339.0</td>
       <td>595.0</td>
       <td>500.0</td>
@@ -147,6 +173,8 @@ data.loc[0:20]
       <th>6</th>
       <td>HIRSCH HS</td>
       <td>3.0</td>
+      <td>41.753748</td>
+      <td>-87.601727</td>
       <td>3362.0</td>
       <td>526.0</td>
       <td>872.0</td>
@@ -163,6 +191,8 @@ data.loc[0:20]
       <th>7</th>
       <td>HARPER HS</td>
       <td>1.0</td>
+      <td>41.775124</td>
+      <td>-87.669089</td>
       <td>2985.0</td>
       <td>351.0</td>
       <td>700.0</td>
@@ -179,6 +209,8 @@ data.loc[0:20]
       <th>8</th>
       <td>MAGIC JOHNSON - ROSELAND HS</td>
       <td>2.0</td>
+      <td>41.695160</td>
+      <td>-87.642697</td>
       <td>1129.0</td>
       <td>184.0</td>
       <td>231.0</td>
@@ -195,6 +227,8 @@ data.loc[0:20]
       <th>9</th>
       <td>YCCS - YOUTH DEVELOPMENT</td>
       <td>2.0</td>
+      <td>41.751377</td>
+      <td>-87.641731</td>
       <td>2954.0</td>
       <td>389.0</td>
       <td>805.0</td>
@@ -211,6 +245,8 @@ data.loc[0:20]
       <th>10</th>
       <td>NOBLE - ROWE CLARK HS</td>
       <td>1.0</td>
+      <td>41.895362</td>
+      <td>-87.718047</td>
       <td>4045.0</td>
       <td>473.0</td>
       <td>833.0</td>
@@ -227,6 +263,8 @@ data.loc[0:20]
       <th>11</th>
       <td>PATHWAYS - BRIGHTON PARK HS</td>
       <td>3.0</td>
+      <td>41.808226</td>
+      <td>-87.702645</td>
       <td>949.0</td>
       <td>178.0</td>
       <td>164.0</td>
@@ -243,6 +281,8 @@ data.loc[0:20]
       <th>12</th>
       <td>JUAREZ HS</td>
       <td>2.0</td>
+      <td>41.852667</td>
+      <td>-87.663732</td>
       <td>1104.0</td>
       <td>218.0</td>
       <td>228.0</td>
@@ -259,6 +299,8 @@ data.loc[0:20]
       <th>14</th>
       <td>AMUNDSEN HS</td>
       <td>3.0</td>
+      <td>41.975067</td>
+      <td>-87.679484</td>
       <td>895.0</td>
       <td>312.0</td>
       <td>112.0</td>
@@ -275,6 +317,8 @@ data.loc[0:20]
       <th>15</th>
       <td>BRONZEVILLE HS</td>
       <td>NaN</td>
+      <td>41.805204</td>
+      <td>-87.625004</td>
       <td>2032.0</td>
       <td>379.0</td>
       <td>466.0</td>
@@ -291,6 +335,8 @@ data.loc[0:20]
       <th>16</th>
       <td>CICS - NORTHTOWN HS</td>
       <td>3.0</td>
+      <td>41.990245</td>
+      <td>-87.726504</td>
       <td>234.0</td>
       <td>81.0</td>
       <td>14.0</td>
@@ -307,6 +353,8 @@ data.loc[0:20]
       <th>17</th>
       <td>NOBLE - JOHNSON HS</td>
       <td>2.0</td>
+      <td>41.778369</td>
+      <td>-87.635117</td>
       <td>1717.0</td>
       <td>307.0</td>
       <td>394.0</td>
@@ -323,6 +371,8 @@ data.loc[0:20]
       <th>18</th>
       <td>HOPE HS</td>
       <td>2.0</td>
+      <td>41.793553</td>
+      <td>-87.641244</td>
       <td>1631.0</td>
       <td>278.0</td>
       <td>369.0</td>
@@ -339,6 +389,8 @@ data.loc[0:20]
       <th>19</th>
       <td>CHICAGO MATH &amp; SCIENCE HS</td>
       <td>2.0</td>
+      <td>42.013031</td>
+      <td>-87.674818</td>
       <td>2630.0</td>
       <td>748.0</td>
       <td>487.0</td>
@@ -355,6 +407,8 @@ data.loc[0:20]
       <th>20</th>
       <td>NOBLE - GOLDER HS</td>
       <td>2.0</td>
+      <td>41.895282</td>
+      <td>-87.664483</td>
       <td>2034.0</td>
       <td>829.0</td>
       <td>183.0</td>
@@ -367,77 +421,374 @@ data.loc[0:20]
       <td>86.2</td>
       <td>5.0</td>
     </tr>
+    <tr>
+      <th>21</th>
+      <td>LINCOLN PARK HS</td>
+      <td>2.0</td>
+      <td>41.918268</td>
+      <td>-87.646009</td>
+      <td>2060.0</td>
+      <td>1018.0</td>
+      <td>205.0</td>
+      <td>53.0</td>
+      <td>83.0</td>
+      <td>3.0</td>
+      <td>NaN</td>
+      <td>22.3</td>
+      <td>79.6</td>
+      <td>90.9</td>
+      <td>5.0</td>
+    </tr>
   </tbody>
 </table>
 </div>
 
 
 
+####  2.1 Plot counts of schools for categorial variables
+
 
 ```python
-data.groupby(['Level']).size().plot(kind='bar')
+#2.1.1 Counts of schools by SQRP ratings (Level)
+ax = data.groupby(['Level']).size().plot(kind='bar')
+ax.set(xlabel="SQRP Rating", ylabel="Count")
 ```
 
 
 
 
-    <matplotlib.axes._subplots.AxesSubplot at 0x7f198b1dbf98>
+    [<matplotlib.text.Text at 0x7f1938028080>,
+     <matplotlib.text.Text at 0x7f193800e630>]
 
 
 
 
-![png](output_1_1.png)
+![png](output_5_1.png)
 
 
 
 ```python
-data.groupby(['Safety_Level']).size().plot(kind='bar')
+#2.1.2 Counts of schools by survey safety levels
+ax = data.groupby(['Safety_Level']).size().plot(kind='bar')
+ax.set(xlabel="Safety Level", ylabel="Count")
 ```
 
 
 
 
-    <matplotlib.axes._subplots.AxesSubplot at 0x7f198b0ca860>
+    [<matplotlib.text.Text at 0x7f1937f9bac8>,
+     <matplotlib.text.Text at 0x7f1938024be0>]
 
 
 
 
-![png](output_2_1.png)
+![png](output_6_1.png)
 
+
+#### 2.2 Histograms for interval variables
+
+Plot the counts of schools with different performance variables (ACT scores, Graduation rates and College enrollment percentages). All Y-axis are for the number of schools. Ten bins (default) are used for each plot.
 
 
 ```python
-data.hist(column='ACT_Score', bins=10, grid=False)
-data.hist(column='Graduation_Pct', bins=10, grid=False)
-data.hist(column='College_Enrollment_Pct', bins=10, grid=False)
-data.hist(column='Total_Crimes', bins=10, grid=False)
+data.hist(column='ACT_Score', grid=False)
+data.hist(column='Graduation_Pct', grid=False)
+data.hist(column='College_Enrollment_Pct', grid=False)
+data.hist(column='Total_Crimes', grid=False)
 ```
 
 
 
 
-    array([[<matplotlib.axes._subplots.AxesSubplot object at 0x7f198b17fcf8>]], dtype=object)
+    array([[<matplotlib.axes._subplots.AxesSubplot object at 0x7f1937cb41d0>]], dtype=object)
 
 
 
 
-![png](output_3_1.png)
+![png](output_8_1.png)
 
 
 
-![png](output_3_2.png)
+![png](output_8_2.png)
 
 
 
-![png](output_3_3.png)
+![png](output_8_3.png)
 
 
 
-![png](output_3_4.png)
+![png](output_8_4.png)
 
+
+#### 2.3 Overview of crime data
+
+How many criminal cases are within 0.5km of schools
 
 
 ```python
+cases = pd.read_csv('data/school_crimes.csv')
+cases['Crime_ID'].nunique()
+```
+
+
+
+
+    77863
+
+
+
+Print the top ten schools with the smallest numbers of criminal cases (safest neighborhood)
+
+
+```python
+data.sort_values(['Total_Crimes'])[['Short_Name','Level','Safety_Level','Total_Crimes']].head(10)
+```
+
+
+
+
+<div>
+<style>
+    .dataframe thead tr:only-child th {
+        text-align: right;
+    }
+
+    .dataframe thead th {
+        text-align: left;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Short_Name</th>
+      <th>Level</th>
+      <th>Safety_Level</th>
+      <th>Total_Crimes</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>102</th>
+      <td>OMBUDSMAN - NORTHWEST HS</td>
+      <td>NaN</td>
+      <td>3.0</td>
+      <td>81.0</td>
+    </tr>
+    <tr>
+      <th>56</th>
+      <td>CHICAGO AGRICULTURE HS</td>
+      <td>5.0</td>
+      <td>3.0</td>
+      <td>154.0</td>
+    </tr>
+    <tr>
+      <th>16</th>
+      <td>CICS - NORTHTOWN HS</td>
+      <td>5.0</td>
+      <td>3.0</td>
+      <td>234.0</td>
+    </tr>
+    <tr>
+      <th>49</th>
+      <td>WASHINGTON HS</td>
+      <td>4.0</td>
+      <td>2.0</td>
+      <td>279.0</td>
+    </tr>
+    <tr>
+      <th>74</th>
+      <td>SOCIAL JUSTICE HS</td>
+      <td>3.0</td>
+      <td>2.0</td>
+      <td>285.0</td>
+    </tr>
+    <tr>
+      <th>164</th>
+      <td>PATHWAYS - ASHBURN HS</td>
+      <td>NaN</td>
+      <td>4.0</td>
+      <td>332.0</td>
+    </tr>
+    <tr>
+      <th>125</th>
+      <td>TAFT HS</td>
+      <td>4.0</td>
+      <td>2.0</td>
+      <td>345.0</td>
+    </tr>
+    <tr>
+      <th>120</th>
+      <td>WORLD LANGUAGE HS</td>
+      <td>5.0</td>
+      <td>2.0</td>
+      <td>345.0</td>
+    </tr>
+    <tr>
+      <th>115</th>
+      <td>YCCS - OLIVE HARVEY</td>
+      <td>NaN</td>
+      <td>2.0</td>
+      <td>350.0</td>
+    </tr>
+    <tr>
+      <th>0</th>
+      <td>MULTICULTURAL HS</td>
+      <td>3.0</td>
+      <td>2.0</td>
+      <td>397.0</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+
+
+Print the top ten schools with the largest numbers of criminal cases (most dangerout neighborhood)
+
+
+```python
+data.sort_values(['Total_Crimes'], ascending=False)[['Short_Name','Level','Safety_Level','Total_Crimes']].head(10)
+```
+
+
+
+
+<div>
+<style>
+    .dataframe thead tr:only-child th {
+        text-align: right;
+    }
+
+    .dataframe thead th {
+        text-align: left;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Short_Name</th>
+      <th>Level</th>
+      <th>Safety_Level</th>
+      <th>Total_Crimes</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>108</th>
+      <td>NOBLE - DRW HS</td>
+      <td>3.0</td>
+      <td>2.0</td>
+      <td>4549.0</td>
+    </tr>
+    <tr>
+      <th>112</th>
+      <td>YCCS - CCA ACADEMY</td>
+      <td>NaN</td>
+      <td>2.0</td>
+      <td>4536.0</td>
+    </tr>
+    <tr>
+      <th>42</th>
+      <td>YCCS - SCHOLASTIC ACHIEVEMENT</td>
+      <td>NaN</td>
+      <td>2.0</td>
+      <td>4444.0</td>
+    </tr>
+    <tr>
+      <th>97</th>
+      <td>MAGIC JOHNSON - N LAWNDALE HS</td>
+      <td>NaN</td>
+      <td>3.0</td>
+      <td>4177.0</td>
+    </tr>
+    <tr>
+      <th>104</th>
+      <td>AUSTIN CCA HS</td>
+      <td>2.0</td>
+      <td>1.0</td>
+      <td>4173.0</td>
+    </tr>
+    <tr>
+      <th>10</th>
+      <td>NOBLE - ROWE CLARK HS</td>
+      <td>3.0</td>
+      <td>1.0</td>
+      <td>4045.0</td>
+    </tr>
+    <tr>
+      <th>33</th>
+      <td>NORTH LAWNDALE - CHRISTIANA HS</td>
+      <td>2.0</td>
+      <td>1.0</td>
+      <td>4009.0</td>
+    </tr>
+    <tr>
+      <th>30</th>
+      <td>LEGAL PREP HS</td>
+      <td>3.0</td>
+      <td>2.0</td>
+      <td>3978.0</td>
+    </tr>
+    <tr>
+      <th>155</th>
+      <td>YCCS - AUSTIN CAREER</td>
+      <td>NaN</td>
+      <td>2.0</td>
+      <td>3630.0</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>HIRSCH HS</td>
+      <td>2.0</td>
+      <td>3.0</td>
+      <td>3362.0</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+
+
+** Visualize locations of schools on Chicago map. Colors represent the number of criminal cases in the neighborhood.**
+
+The safety of school neighborhood displays a clustering pattern.
+
+
+```python
+chicago = pd.read_csv('data/chicago_boundary.csv')
+#fig, ax = plt.subplots(1, 1, figsize=(40,40))
+plt.figure(figsize=(7,7))
+plt.plot('Longitude', 'Latitude', data=chicago.loc[0:11350])
+plt.scatter(data.School_Longitude, data.School_Latitude, c=data.Total_Crimes, cmap=plt.cm.get_cmap('cool'))
+plt.colorbar()
+plt.show()
+```
+
+
+![png](output_16_0.png)
+
+
+### 3 Regression for data correlation analysis
+
+**Target variable (Performance variables):** Rating, ACT Score, Graduation rate, College Enrollment Percentage
+
+**Predictors (Safety variables):** (1) Total crimes (2) Number of different types of crimes
+
+
+```python
+# Define functions for analysis for the rest
+
+# Regression on the total crimes. Scatter and trend line will be plotted. Fitting results will be printed.
 def OLS_by_total_crimes(data, target):
     # Try total crimes data
     subdata = data[[target, 'Total_Crimes']].dropna()
@@ -451,21 +802,20 @@ def OLS_by_total_crimes(data, target):
     model = ols.fit()
     return model
 
-
-
+# Regression on different types of crimes. Only fitting results will be shown.
 def OLS_by_crime_types(data, target):
     # Try categorized crime data
     subdata = data[[target, 
                     'Total_Thefts', 'Total_Batteries', 'Total_Assaults',
                     'Total_Robberies', 'Total_Weapon_Violations', 'Total_Homicides']].dropna()
-
-# Print regression result
-
+    
     ols = smf.ols(formula = target + "~ Total_Thefts + Total_Batteries + Total_Assaults + Total_Robberies + Total_Weapon_Violations + Total_Homicides", data = subdata)
     model = ols.fit()
     return model
     
 ```
+
+#### 3.1 Scatter matrix analysis using total crimes and performance variables.
 
 
 ```python
@@ -476,28 +826,30 @@ scatter_matrix(data[['Total_Crimes','ACT_Score','Graduation_Pct','College_Enroll
 
 
 
-    array([[<matplotlib.axes._subplots.AxesSubplot object at 0x7f1943c1fa58>,
-            <matplotlib.axes._subplots.AxesSubplot object at 0x7f1943b9e5f8>,
-            <matplotlib.axes._subplots.AxesSubplot object at 0x7f1943bab5f8>,
-            <matplotlib.axes._subplots.AxesSubplot object at 0x7f1943ae6668>],
-           [<matplotlib.axes._subplots.AxesSubplot object at 0x7f1943ab7e10>,
-            <matplotlib.axes._subplots.AxesSubplot object at 0x7f1943ab7e48>,
-            <matplotlib.axes._subplots.AxesSubplot object at 0x7f19437ad828>,
-            <matplotlib.axes._subplots.AxesSubplot object at 0x7f19437284e0>],
-           [<matplotlib.axes._subplots.AxesSubplot object at 0x7f1943707e10>,
-            <matplotlib.axes._subplots.AxesSubplot object at 0x7f19436ca240>,
-            <matplotlib.axes._subplots.AxesSubplot object at 0x7f1943657780>,
-            <matplotlib.axes._subplots.AxesSubplot object at 0x7f19435e7eb8>],
-           [<matplotlib.axes._subplots.AxesSubplot object at 0x7f19435235c0>,
-            <matplotlib.axes._subplots.AxesSubplot object at 0x7f19434f3c88>,
-            <matplotlib.axes._subplots.AxesSubplot object at 0x7f1943471400>,
-            <matplotlib.axes._subplots.AxesSubplot object at 0x7f19434516a0>]], dtype=object)
+    array([[<matplotlib.axes._subplots.AxesSubplot object at 0x7f1937d86e10>,
+            <matplotlib.axes._subplots.AxesSubplot object at 0x7f193811a828>,
+            <matplotlib.axes._subplots.AxesSubplot object at 0x7f19375820f0>,
+            <matplotlib.axes._subplots.AxesSubplot object at 0x7f193851feb8>],
+           [<matplotlib.axes._subplots.AxesSubplot object at 0x7f193897cc18>,
+            <matplotlib.axes._subplots.AxesSubplot object at 0x7f193897c9b0>,
+            <matplotlib.axes._subplots.AxesSubplot object at 0x7f1941c18240>,
+            <matplotlib.axes._subplots.AxesSubplot object at 0x7f1942a3bc18>],
+           [<matplotlib.axes._subplots.AxesSubplot object at 0x7f19384b46a0>,
+            <matplotlib.axes._subplots.AxesSubplot object at 0x7f1938282908>,
+            <matplotlib.axes._subplots.AxesSubplot object at 0x7f1938dd6898>,
+            <matplotlib.axes._subplots.AxesSubplot object at 0x7f193853d320>],
+           [<matplotlib.axes._subplots.AxesSubplot object at 0x7f19388826d8>,
+            <matplotlib.axes._subplots.AxesSubplot object at 0x7f1938dc1940>,
+            <matplotlib.axes._subplots.AxesSubplot object at 0x7f1940a7cf98>,
+            <matplotlib.axes._subplots.AxesSubplot object at 0x7f193ff8dcf8>]], dtype=object)
 
 
 
 
-![png](output_5_1.png)
+![png](output_20_1.png)
 
+
+#### 3.2 Scatter plots of survey safety levels on different crimes
 
 
 ```python
@@ -505,34 +857,36 @@ data.plot(kind='scatter', x='Total_Crimes', y='Safety_Level')
 data.plot(kind='scatter', x='Total_Robberies', y='Safety_Level')
 data.plot(kind='scatter', x='Total_Weapon_Violations', y='Safety_Level')
 data.plot(kind='scatter', x='Total_Homicides', y='Safety_Level')
-
 ```
 
 
 
 
-    <matplotlib.axes._subplots.AxesSubplot at 0x7f198adab080>
+    <matplotlib.axes._subplots.AxesSubplot at 0x7f1937baf198>
 
 
 
 
-![png](output_6_1.png)
+![png](output_22_1.png)
 
 
 
-![png](output_6_2.png)
+![png](output_22_2.png)
 
 
 
-![png](output_6_3.png)
+![png](output_22_3.png)
 
 
 
-![png](output_6_4.png)
+![png](output_22_4.png)
 
+
+### 3.3 Regression on total crimes
 
 
 ```python
+#3.3.1 Target variable: Rating (Level)
 OLS_by_total_crimes(data, 'Level').summary()
 ```
 
@@ -554,7 +908,7 @@ OLS_by_total_crimes(data, 'Level').summary()
   <th>Date:</th>             <td>Thu, 30 Nov 2017</td> <th>  Prob (F-statistic):</th>  <td>0.00219</td>
 </tr>
 <tr>
-  <th>Time:</th>                 <td>12:17:35</td>     <th>  Log-Likelihood:    </th> <td> -189.92</td>
+  <th>Time:</th>                 <td>22:26:59</td>     <th>  Log-Likelihood:    </th> <td> -189.92</td>
 </tr>
 <tr>
   <th>No. Observations:</th>      <td>   122</td>      <th>  AIC:               </th> <td>   383.8</td>
@@ -598,11 +952,12 @@ OLS_by_total_crimes(data, 'Level').summary()
 
 
 
-![png](output_7_1.png)
+![png](output_24_1.png)
 
 
 
 ```python
+#3.3.2 Target variable: Survey safety level
 OLS_by_total_crimes(data, 'Safety_Level').summary()
 ```
 
@@ -624,7 +979,7 @@ OLS_by_total_crimes(data, 'Safety_Level').summary()
   <th>Date:</th>             <td>Thu, 30 Nov 2017</td> <th>  Prob (F-statistic):</th>  <td>0.0189</td> 
 </tr>
 <tr>
-  <th>Time:</th>                 <td>12:17:36</td>     <th>  Log-Likelihood:    </th> <td> -173.20</td>
+  <th>Time:</th>                 <td>22:26:59</td>     <th>  Log-Likelihood:    </th> <td> -173.20</td>
 </tr>
 <tr>
   <th>No. Observations:</th>      <td>   148</td>      <th>  AIC:               </th> <td>   350.4</td>
@@ -668,11 +1023,12 @@ OLS_by_total_crimes(data, 'Safety_Level').summary()
 
 
 
-![png](output_8_1.png)
+![png](output_25_1.png)
 
 
 
 ```python
+#3.3.3 Target variable: ACT score
 OLS_by_total_crimes(data, 'ACT_Score').summary()
 ```
 
@@ -694,7 +1050,7 @@ OLS_by_total_crimes(data, 'ACT_Score').summary()
   <th>Date:</th>             <td>Thu, 30 Nov 2017</td> <th>  Prob (F-statistic):</th>  <td>0.00524</td>
 </tr>
 <tr>
-  <th>Time:</th>                 <td>12:17:36</td>     <th>  Log-Likelihood:    </th> <td> -354.04</td>
+  <th>Time:</th>                 <td>22:27:00</td>     <th>  Log-Likelihood:    </th> <td> -354.04</td>
 </tr>
 <tr>
   <th>No. Observations:</th>      <td>   156</td>      <th>  AIC:               </th> <td>   712.1</td>
@@ -738,11 +1094,12 @@ OLS_by_total_crimes(data, 'ACT_Score').summary()
 
 
 
-![png](output_9_1.png)
+![png](output_26_1.png)
 
 
 
 ```python
+#3.3.4 Target variable: Graduation rate
 OLS_by_total_crimes(data, 'Graduation_Pct').summary()
 ```
 
@@ -764,7 +1121,7 @@ OLS_by_total_crimes(data, 'Graduation_Pct').summary()
   <th>Date:</th>             <td>Thu, 30 Nov 2017</td> <th>  Prob (F-statistic):</th>  <td>0.00510</td>
 </tr>
 <tr>
-  <th>Time:</th>                 <td>12:17:36</td>     <th>  Log-Likelihood:    </th> <td> -435.64</td>
+  <th>Time:</th>                 <td>22:27:00</td>     <th>  Log-Likelihood:    </th> <td> -435.64</td>
 </tr>
 <tr>
   <th>No. Observations:</th>      <td>   112</td>      <th>  AIC:               </th> <td>   875.3</td>
@@ -808,11 +1165,12 @@ OLS_by_total_crimes(data, 'Graduation_Pct').summary()
 
 
 
-![png](output_10_1.png)
+![png](output_27_1.png)
 
 
 
 ```python
+#3.3.5 Target variable: College enrollment percentage
 OLS_by_total_crimes(data, 'College_Enrollment_Pct').summary()
 ```
 
@@ -834,7 +1192,7 @@ OLS_by_total_crimes(data, 'College_Enrollment_Pct').summary()
   <th>Date:</th>                <td>Thu, 30 Nov 2017</td>    <th>  Prob (F-statistic):</th>  <td>0.0138</td> 
 </tr>
 <tr>
-  <th>Time:</th>                    <td>12:17:37</td>        <th>  Log-Likelihood:    </th> <td> -644.82</td>
+  <th>Time:</th>                    <td>22:27:01</td>        <th>  Log-Likelihood:    </th> <td> -644.82</td>
 </tr>
 <tr>
   <th>No. Observations:</th>         <td>   142</td>         <th>  AIC:               </th> <td>   1294.</td>
@@ -878,11 +1236,96 @@ OLS_by_total_crimes(data, 'College_Enrollment_Pct').summary()
 
 
 
-![png](output_11_1.png)
+![png](output_28_1.png)
+
+
+#### 3.4 Multivariable regressions on different variables
+
+
+```python
+#3.4.1 Target variable: Rating (Level)
+OLS_by_crime_types(data, 'Level').summary()
+```
+
+
+
+
+<table class="simpletable">
+<caption>OLS Regression Results</caption>
+<tr>
+  <th>Dep. Variable:</th>          <td>Level</td>      <th>  R-squared:         </th> <td>   0.150</td>
+</tr>
+<tr>
+  <th>Model:</th>                   <td>OLS</td>       <th>  Adj. R-squared:    </th> <td>   0.095</td>
+</tr>
+<tr>
+  <th>Method:</th>             <td>Least Squares</td>  <th>  F-statistic:       </th> <td>   2.726</td>
+</tr>
+<tr>
+  <th>Date:</th>             <td>Thu, 30 Nov 2017</td> <th>  Prob (F-statistic):</th>  <td>0.0175</td> 
+</tr>
+<tr>
+  <th>Time:</th>                 <td>22:27:01</td>     <th>  Log-Likelihood:    </th> <td> -152.80</td>
+</tr>
+<tr>
+  <th>No. Observations:</th>      <td>   100</td>      <th>  AIC:               </th> <td>   319.6</td>
+</tr>
+<tr>
+  <th>Df Residuals:</th>          <td>    93</td>      <th>  BIC:               </th> <td>   337.8</td>
+</tr>
+<tr>
+  <th>Df Model:</th>              <td>     6</td>      <th>                     </th>     <td> </td>   
+</tr>
+<tr>
+  <th>Covariance Type:</th>      <td>nonrobust</td>    <th>                     </th>     <td> </td>   
+</tr>
+</table>
+<table class="simpletable">
+<tr>
+             <td></td>                <th>coef</th>     <th>std err</th>      <th>t</th>      <th>P>|t|</th>  <th>[0.025</th>    <th>0.975]</th>  
+</tr>
+<tr>
+  <th>Intercept</th>               <td>    3.7039</td> <td>    0.335</td> <td>   11.043</td> <td> 0.000</td> <td>    3.038</td> <td>    4.370</td>
+</tr>
+<tr>
+  <th>Total_Thefts</th>            <td> 5.327e-05</td> <td>    0.001</td> <td>    0.084</td> <td> 0.934</td> <td>   -0.001</td> <td>    0.001</td>
+</tr>
+<tr>
+  <th>Total_Batteries</th>         <td>   -0.0040</td> <td>    0.003</td> <td>   -1.567</td> <td> 0.120</td> <td>   -0.009</td> <td>    0.001</td>
+</tr>
+<tr>
+  <th>Total_Assaults</th>          <td>    0.0044</td> <td>    0.006</td> <td>    0.685</td> <td> 0.495</td> <td>   -0.008</td> <td>    0.017</td>
+</tr>
+<tr>
+  <th>Total_Robberies</th>         <td>    0.0057</td> <td>    0.005</td> <td>    1.228</td> <td> 0.222</td> <td>   -0.003</td> <td>    0.015</td>
+</tr>
+<tr>
+  <th>Total_Weapon_Violations</th> <td>    0.0005</td> <td>    0.008</td> <td>    0.062</td> <td> 0.951</td> <td>   -0.016</td> <td>    0.017</td>
+</tr>
+<tr>
+  <th>Total_Homicides</th>         <td>   -0.0165</td> <td>    0.038</td> <td>   -0.432</td> <td> 0.666</td> <td>   -0.092</td> <td>    0.059</td>
+</tr>
+</table>
+<table class="simpletable">
+<tr>
+  <th>Omnibus:</th>       <td>16.507</td> <th>  Durbin-Watson:     </th> <td>   2.166</td>
+</tr>
+<tr>
+  <th>Prob(Omnibus):</th> <td> 0.000</td> <th>  Jarque-Bera (JB):  </th> <td>   4.600</td>
+</tr>
+<tr>
+  <th>Skew:</th>          <td> 0.083</td> <th>  Prob(JB):          </th> <td>   0.100</td>
+</tr>
+<tr>
+  <th>Kurtosis:</th>      <td> 1.962</td> <th>  Cond. No.          </th> <td>1.93e+03</td>
+</tr>
+</table>
+
 
 
 
 ```python
+#3.4.2 Target variable: ACT Score
 OLS_by_crime_types(data, 'ACT_Score').summary()
 ```
 
@@ -904,7 +1347,7 @@ OLS_by_crime_types(data, 'ACT_Score').summary()
   <th>Date:</th>             <td>Thu, 30 Nov 2017</td> <th>  Prob (F-statistic):</th> <td>0.000875</td>
 </tr>
 <tr>
-  <th>Time:</th>                 <td>12:17:37</td>     <th>  Log-Likelihood:    </th> <td> -287.35</td>
+  <th>Time:</th>                 <td>22:27:01</td>     <th>  Log-Likelihood:    </th> <td> -287.35</td>
 </tr>
 <tr>
   <th>No. Observations:</th>      <td>   131</td>      <th>  AIC:               </th> <td>   588.7</td>
@@ -964,6 +1407,7 @@ OLS_by_crime_types(data, 'ACT_Score').summary()
 
 
 ```python
+#3.4.3 Target variable: Graduation rate
 OLS_by_crime_types(data, 'Graduation_Pct').summary()
 ```
 
@@ -985,7 +1429,7 @@ OLS_by_crime_types(data, 'Graduation_Pct').summary()
   <th>Date:</th>             <td>Thu, 30 Nov 2017</td> <th>  Prob (F-statistic):</th>  <td>0.0172</td> 
 </tr>
 <tr>
-  <th>Time:</th>                 <td>12:17:37</td>     <th>  Log-Likelihood:    </th> <td> -356.51</td>
+  <th>Time:</th>                 <td>22:27:01</td>     <th>  Log-Likelihood:    </th> <td> -356.51</td>
 </tr>
 <tr>
   <th>No. Observations:</th>      <td>    92</td>      <th>  AIC:               </th> <td>   727.0</td>
@@ -1045,6 +1489,7 @@ OLS_by_crime_types(data, 'Graduation_Pct').summary()
 
 
 ```python
+#3.4.4 Target variable: College enrollment percentage
 OLS_by_crime_types(data, 'College_Enrollment_Pct').summary()
 ```
 
@@ -1066,7 +1511,7 @@ OLS_by_crime_types(data, 'College_Enrollment_Pct').summary()
   <th>Date:</th>                <td>Thu, 30 Nov 2017</td>    <th>  Prob (F-statistic):</th>  <td>0.00195</td>
 </tr>
 <tr>
-  <th>Time:</th>                    <td>12:17:37</td>        <th>  Log-Likelihood:    </th> <td> -531.16</td>
+  <th>Time:</th>                    <td>22:27:01</td>        <th>  Log-Likelihood:    </th> <td> -531.16</td>
 </tr>
 <tr>
   <th>No. Observations:</th>         <td>   118</td>         <th>  AIC:               </th> <td>   1076.</td>
