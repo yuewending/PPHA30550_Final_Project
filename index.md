@@ -101,16 +101,17 @@ Last, the crime data are visualized below. Left is the counts histogram categori
 
 <img src="data_analyze/output_8_3.png" width="58%"> <img src="data_analyze/output_16_0.png" width="40%">
 
-Short_Name|Level|Safety_Level|Total_Crimes
------------- | -------------
-OMBUDSMAN - NORTHWEST HS|NaN|3.0|81.0
-CHICAGO AGRICULTURE HS|5.0|3.0|154.0
-CICS - NORTHTOWN HS|5.0|3.0|234.0
-WASHINGTON HS|4.0|2.0|279.0
-SOCIAL JUSTICE HS|3.0|2.0|285.0
-PATHWAYS - ASHBURN HS|NaN|4.0|332.0
-TAFT HS|4.0|2.0|345.0
-WORLD LANGUAGE HS|5.0|2.0|345.0
-YCCS - OLIVE HARVEY|NaN|2.0|350.0
+Short_Name | Level | Safety_Level | Total_Crimes
+------------  |  -------------
+OMBUDSMAN - NORTHWEST HS | NaN | 3.0 | 81.0
+CHICAGO AGRICULTURE HS | 5.0 | 3.0 | 154.0
+CICS - NORTHTOWN HS | 5.0 | 3.0 | 234.0
+WASHINGTON HS | 4.0 | 2.0 | 279.0
+SOCIAL JUSTICE HS | 3.0 | 2.0 | 285.0
+PATHWAYS - ASHBURN HS | NaN | 4.0 | 332.0
+TAFT HS | 4.0 | 2.0 | 345.0
+WORLD LANGUAGE HS | 5.0 | 2.0 | 345.0
+YCCS - OLIVE HARVEY | NaN | 2.0 | 350.0
+
 
 MULTICULTURAL HS	3.0	2.0	397.0
