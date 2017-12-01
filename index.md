@@ -131,3 +131,6 @@ LEGAL PREP HS | 3.0 | 2.0 | 3978.0
 YCCS - AUSTIN CAREER | NaN | 2.0 | 3630.0
 HIRSCH HS | 2.0 | 3.0 | 3362.0
 
+### Scatter Matrix Analysis of Selected Variables
+
+<img src="data_analyze/output_20_1.png" width="90%">
