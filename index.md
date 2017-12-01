@@ -100,3 +100,17 @@ Then, counts of schools with different performance variables are shown below. Th
 Last, the crime data are visualized below. Left is the counts histogram categoried by number of crimes. Most of neighborhoods nearby high schools have less than 3000 crime reports over the year (left). The right panel is the geographic plotting of the schools on the Chicago map, and the colors represent the number of crime reports. It demostrate a strong clusterring pattern. Mid-west region has the most dangerous neighborhoods, while the safest neighborhoods are near the north and south border of Chicago.
 
 <img src="data_analyze/output_8_3.png" width="58%"> <img src="data_analyze/output_16_0.png" width="40%">
+
+Short_Name|Level|Safety_Level|Total_Crimes
+------------ | -------------
+OMBUDSMAN - NORTHWEST HS|NaN|3.0|81.0
+CHICAGO AGRICULTURE HS|5.0|3.0|154.0
+CICS - NORTHTOWN HS|5.0|3.0|234.0
+WASHINGTON HS|4.0|2.0|279.0
+SOCIAL JUSTICE HS|3.0|2.0|285.0
+PATHWAYS - ASHBURN HS|NaN|4.0|332.0
+TAFT HS|4.0|2.0|345.0
+WORLD LANGUAGE HS|5.0|2.0|345.0
+YCCS - OLIVE HARVEY|NaN|2.0|350.0
+
+MULTICULTURAL HS	3.0	2.0	397.0
