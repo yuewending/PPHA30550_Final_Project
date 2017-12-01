@@ -91,5 +91,5 @@ All analysis code for this project is included in a single jupyter notebook:
 
 First, the counts of schools on different ratings or levels are plotted below.
 
-<img src="data_analyze/output_5_1.png" width ="45%"> <img src="data_analyze/output_6_1.png" width ="45%">
-<img src="img/ols_crime_temp.png" width="45%">
+<img src="data_analyze/output_5_1.png" width="45%"> <img src="data_analyze/output_6_1.png" width="45%">
+
