@@ -101,6 +101,8 @@ Last, the crime data are visualized below. Left is the counts histogram categori
 
 <img src="data_analyze/output_8_3.png" width="58%"> <img src="data_analyze/output_16_0.png" width="40%">
 
+The schools in the safest neighborhoods are:
+
 Short_Name | Level | Safety_Level | Total_Crimes
 -----------| ----- | ------------ | ------------
 OMBUDSMAN - NORTHWEST HS | NaN | 3.0 | 81.0
@@ -112,6 +114,20 @@ PATHWAYS - ASHBURN HS | NaN | 4.0 | 332.0
 TAFT HS | 4.0 | 2.0 | 345.0
 WORLD LANGUAGE HS | 5.0 | 2.0 | 345.0
 YCCS - OLIVE HARVEY | NaN | 2.0 | 350.0
+MULTICULTURAL HS | 3.0 | 2.0 | 397.0
 
+The schools in the most dangerous neighborhoods are:
 
-MULTICULTURAL HS	3.0	2.0	397.0
+Short_Name | Level | Safety_Level | Total_Crimes
+-----------| ----- | ------------ | ------------
+NOBLE - DRW HS | 3.0 | 2.0 | 4549.0
+YCCS - CCA ACADEMY | NaN | 2.0 | 4536.0
+YCCS - SCHOLASTIC ACHIEVEMENT | NaN | 2.0 | 4444.0
+MAGIC JOHNSON - N LAWNDALE HS | NaN | 3.0 | 4177.0
+AUSTIN CCA HS | 2.0 | 1.0 | 4173.0
+NOBLE - ROWE CLARK HS | 3.0 | 1.0 | 4045.0
+NORTH LAWNDALE - CHRISTIANA HS | 2.0 | 1.0 | 4009.0
+LEGAL PREP HS | 3.0 | 2.0 | 3978.0
+YCCS - AUSTIN CAREER | NaN | 2.0 | 3630.0
+HIRSCH HS | 2.0 | 3.0 | 3362.0
+
