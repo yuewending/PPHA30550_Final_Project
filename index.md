@@ -99,4 +99,4 @@ Then, counts of schools with different performance variables are shown below. Th
 
 Last, the crime data are visualized below. Left is the counts histogram categoried by number of crimes. Most of neighborhoods nearby high schools have less than 3000 crime reports over the year (left). The right panel is the geographic plotting of the schools on the Chicago map, and the colors represent the number of crime reports. It demostrate a strong clusterring pattern.
 
-<img src="data_analyze/output_8_3.png" width="57%"> <img src="data_analyze/output_16_0.png" width="39%">
+<img src="data_analyze/output_8_3.png" width="58%"> <img src="data_analyze/output_16_0.png" width="38%">
