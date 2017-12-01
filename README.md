@@ -1,4 +1,4 @@
-# Correlation Between Performance and Safety of High Schools
+# How Neighborhood Safety Affect High School Performances?
 Final Project of Data Anaysis for Course PPHA30550
 
 **Students:** Xiaofan Liu and Yuewen Ding
