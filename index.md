@@ -91,15 +91,19 @@ All analysis code for this project is included in a single jupyter notebook:
 
 First, the counts of schools on different SQRP ratings and safety levels are plotted below. For the SQRP ratings, schools with higher numbers have better qualities. For the safety levels, schools with higher numbers have more responses with safer neighborhoods. **Because most of schools have very low safety levels (1~3), most parents and students are not satisfied with the neighborhood safety around the schools**
 
+<img src="data_analyze/output_5_0.png" width="49%"> <img src="data_analyze/output_6_0.png" width="49%">
+
 <img src="data_analyze/output_5_1.png" width="49%"> <img src="data_analyze/output_6_1.png" width="49%">
 
 Then, counts of schools with different performance variables are shown below. These plots can reflect the overall performances of Chicago high schools.
 
-<img src="data_analyze/output_8_1.png" width="32%"> <img src="data_analyze/output_8_2.png" width="32%"> <img src="data_analyze/output_8_3.png" width="32%">
+<img src="data_analyze/output_8_0.png" width="32%"> <img src="data_analyze/output_9_0.png" width="32%"> <img src="data_analyze/output_10_0.png" width="32%">
+
+<img src="data_analyze/output_8_1.png" width="32%"> <img src="data_analyze/output_9_1.png" width="32%"> <img src="data_analyze/output_10_1.png" width="32%">
 
 Last, the crime data are visualized below. Left is the counts histogram categoried by number of crimes. Most of neighborhoods nearby high schools have less than 3000 crime reports over the year (left). The right panel is the geographic plotting of the schools on the Chicago map, and the colors represent the number of crime reports. It demostrate a strong clusterring pattern. Mid-west region has the most dangerous neighborhoods, while the safest neighborhoods are near the north and south border of Chicago.
 
-<img src="data_analyze/output_8_3.png" width="58%"> <img src="data_analyze/output_16_0.png" width="40%">
+<img src="data_analyze/output_13_1.png" width="58%"> <img src="data_analyze/output_19_0.png" width="40%">
 
 The schools in the safest neighborhoods are:
 
@@ -135,15 +139,15 @@ HIRSCH HS | 2.0 | 3.0 | 3362.0
 
 The pair-wise scatter plots are shown below for performance variables and the total crime predictor. Strong correlations can be observed from the performance variables (ACT, Graudation and College enrollment). It implies that the three variables we selected are good indicator to assess the qualities of high schools, and their trends are in good agreement.
 
-<img src="data_analyze/output_20_1.png" width="65%">
+<img src="data_analyze/output_23_1.png" width="65%">
 
 ### Regressions on Total Crimes
 
 Regression analysis with OLS method was used on the varible of total crimes. The plots and trend lines for the four performance variables are shown below. All of them display clear trends that higher crime rates will lower the performance.
 
-<img src="data_analyze/output_24_1.png" width="49%"> <img src="data_analyze/output_26_1.png" width="49%">
-
 <img src="data_analyze/output_27_1.png" width="49%"> <img src="data_analyze/output_28_1.png" width="49%">
+
+<img src="data_analyze/output_29_1.png" width="49%"> <img src="data_analyze/output_30_1.png" width="49%">
 
 The statistics parameters are summarized in the table below. All the slope coeffients are negative and statistically significant (>95% probabilities that the true values are not zero).
 
