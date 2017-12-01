@@ -18,10 +18,10 @@ https://github.com/yuewending/PPHA30550_Final_Project/blob/master/data_analyze.i
 
 **The folder [`data`](https://github.com/yuewending/PPHA30550_Final_Project/tree/master/data)** contains all the raw and refined data for analysis
 
-**The folder [`data_analyze`](https://github.com/yuewending/PPHA30550_Final_Project/tree/master/data_analyze) ** contains the figures of results.
+**The folder [`data_analyze`](https://github.com/yuewending/PPHA30550_Final_Project/tree/master/data_analyze)** contains the figures of results.
 
 ### List of Contents
 
-# **data**
-# **data_analyze**
-# 
+* **data**
+* **data_analyze**
+
