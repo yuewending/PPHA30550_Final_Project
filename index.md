@@ -82,3 +82,9 @@ Different data sets for school performances were merged by School IDs, and the n
 
 
 ## Data Analysis
+
+All analysis code for this project is included in a single jupyter notebook:
+
+[data_analyze.ipynb](https://github.com/yuewending/PPHA30550_Final_Project/tree/master/data_analyze.ipynb)
+
+### Overview of Data
