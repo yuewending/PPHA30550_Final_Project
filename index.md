@@ -156,6 +156,8 @@ College rate | -0.0049 | -2.493 | 0.014 | 0.043
 
 ### Multivariable Regressions on Differnt Types of Crimes
 
+The results of multivariable regressions on different types of crimes are listed below. Statistically significant dependences can be only found with the type of battery crimes to the performances of SQRP rating, ACT score and College enrollment percentage. No dependence can be found for the graduation rate.
+
 **SQRP** | coef | std err | t | Pr | \[0.025 | 0.975\]
 -------- | ---- | ------- | - | -- | ------ | ------
 Intercept | 3.7039 | 0.335 | 11.043 | 0.000 | 3.038 | 4.370
