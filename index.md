@@ -102,7 +102,7 @@ Last, the crime data are visualized below. Left is the counts histogram categori
 <img src="data_analyze/output_8_3.png" width="58%"> <img src="data_analyze/output_16_0.png" width="40%">
 
 Short_Name | Level | Safety_Level | Total_Crimes
-------------  |  -------------
+-----------| ----- | ------------ | ------------
 OMBUDSMAN - NORTHWEST HS | NaN | 3.0 | 81.0
 CHICAGO AGRICULTURE HS | 5.0 | 3.0 | 154.0
 CICS - NORTHTOWN HS | 5.0 | 3.0 | 234.0
