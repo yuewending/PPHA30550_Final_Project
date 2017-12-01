@@ -576,6 +576,17 @@ cases['Crime_ID'].nunique()
 data.hist(column='Total_Crimes', grid=False)
 ```
 
+
+
+
+    array([[<matplotlib.axes._subplots.AxesSubplot object at 0x7f1935765198>]], dtype=object)
+
+
+
+
+![png](output_13_1.png)
+
+
 Print the top ten schools with the smallest numbers of criminal cases (safest neighborhood)
 
 
@@ -863,22 +874,22 @@ scatter_matrix(data[['Total_Crimes','ACT_Score','Graduation_Pct','College_Enroll
 
 
 
-    array([[<matplotlib.axes._subplots.AxesSubplot object at 0x7f1937d86e10>,
-            <matplotlib.axes._subplots.AxesSubplot object at 0x7f193811a828>,
-            <matplotlib.axes._subplots.AxesSubplot object at 0x7f19375820f0>,
-            <matplotlib.axes._subplots.AxesSubplot object at 0x7f193851feb8>],
-           [<matplotlib.axes._subplots.AxesSubplot object at 0x7f193897cc18>,
-            <matplotlib.axes._subplots.AxesSubplot object at 0x7f193897c9b0>,
-            <matplotlib.axes._subplots.AxesSubplot object at 0x7f1941c18240>,
-            <matplotlib.axes._subplots.AxesSubplot object at 0x7f1942a3bc18>],
-           [<matplotlib.axes._subplots.AxesSubplot object at 0x7f19384b46a0>,
-            <matplotlib.axes._subplots.AxesSubplot object at 0x7f1938282908>,
-            <matplotlib.axes._subplots.AxesSubplot object at 0x7f1938dd6898>,
-            <matplotlib.axes._subplots.AxesSubplot object at 0x7f193853d320>],
-           [<matplotlib.axes._subplots.AxesSubplot object at 0x7f19388826d8>,
-            <matplotlib.axes._subplots.AxesSubplot object at 0x7f1938dc1940>,
-            <matplotlib.axes._subplots.AxesSubplot object at 0x7f1940a7cf98>,
-            <matplotlib.axes._subplots.AxesSubplot object at 0x7f193ff8dcf8>]], dtype=object)
+    array([[<matplotlib.axes._subplots.AxesSubplot object at 0x7f1937554e48>,
+            <matplotlib.axes._subplots.AxesSubplot object at 0x7f193737e3c8>,
+            <matplotlib.axes._subplots.AxesSubplot object at 0x7f19374085f8>,
+            <matplotlib.axes._subplots.AxesSubplot object at 0x7f19372cf748>],
+           [<matplotlib.axes._subplots.AxesSubplot object at 0x7f19372ab4a8>,
+            <matplotlib.axes._subplots.AxesSubplot object at 0x7f19372ab4e0>,
+            <matplotlib.axes._subplots.AxesSubplot object at 0x7f193717e198>,
+            <matplotlib.axes._subplots.AxesSubplot object at 0x7f193716c908>],
+           [<matplotlib.axes._subplots.AxesSubplot object at 0x7f1934fb5898>,
+            <matplotlib.axes._subplots.AxesSubplot object at 0x7f1934f73ba8>,
+            <matplotlib.axes._subplots.AxesSubplot object at 0x7f1934f04208>,
+            <matplotlib.axes._subplots.AxesSubplot object at 0x7f1934e94588>],
+           [<matplotlib.axes._subplots.AxesSubplot object at 0x7f1934dd0048>,
+            <matplotlib.axes._subplots.AxesSubplot object at 0x7f1934dad710>,
+            <matplotlib.axes._subplots.AxesSubplot object at 0x7f1934d17e48>,
+            <matplotlib.axes._subplots.AxesSubplot object at 0x7f1934d01128>]], dtype=object)
 
 
 
@@ -899,7 +910,7 @@ data.plot(kind='scatter', x='Total_Homicides', y='Safety_Level')
 
 
 
-    <matplotlib.axes._subplots.AxesSubplot at 0x7f1937baf198>
+    <matplotlib.axes._subplots.AxesSubplot at 0x7f19356dc128>
 
 
 
@@ -942,10 +953,10 @@ OLS_by_total_crimes(data, 'Level').summary()
   <th>Method:</th>             <td>Least Squares</td>  <th>  F-statistic:       </th> <td>   9.799</td>
 </tr>
 <tr>
-  <th>Date:</th>             <td>Thu, 30 Nov 2017</td> <th>  Prob (F-statistic):</th>  <td>0.00219</td>
+  <th>Date:</th>             <td>Fri, 01 Dec 2017</td> <th>  Prob (F-statistic):</th>  <td>0.00219</td>
 </tr>
 <tr>
-  <th>Time:</th>                 <td>22:26:59</td>     <th>  Log-Likelihood:    </th> <td> -189.92</td>
+  <th>Time:</th>                 <td>00:14:36</td>     <th>  Log-Likelihood:    </th> <td> -189.92</td>
 </tr>
 <tr>
   <th>No. Observations:</th>      <td>   122</td>      <th>  AIC:               </th> <td>   383.8</td>
@@ -1013,10 +1024,10 @@ OLS_by_total_crimes(data, 'Safety_Level').summary()
   <th>Method:</th>             <td>Least Squares</td>  <th>  F-statistic:       </th> <td>   5.636</td>
 </tr>
 <tr>
-  <th>Date:</th>             <td>Thu, 30 Nov 2017</td> <th>  Prob (F-statistic):</th>  <td>0.0189</td> 
+  <th>Date:</th>             <td>Fri, 01 Dec 2017</td> <th>  Prob (F-statistic):</th>  <td>0.0189</td> 
 </tr>
 <tr>
-  <th>Time:</th>                 <td>22:26:59</td>     <th>  Log-Likelihood:    </th> <td> -173.20</td>
+  <th>Time:</th>                 <td>00:14:37</td>     <th>  Log-Likelihood:    </th> <td> -173.20</td>
 </tr>
 <tr>
   <th>No. Observations:</th>      <td>   148</td>      <th>  AIC:               </th> <td>   350.4</td>
@@ -1084,10 +1095,10 @@ OLS_by_total_crimes(data, 'ACT_Score').summary()
   <th>Method:</th>             <td>Least Squares</td>  <th>  F-statistic:       </th> <td>   8.023</td>
 </tr>
 <tr>
-  <th>Date:</th>             <td>Thu, 30 Nov 2017</td> <th>  Prob (F-statistic):</th>  <td>0.00524</td>
+  <th>Date:</th>             <td>Fri, 01 Dec 2017</td> <th>  Prob (F-statistic):</th>  <td>0.00524</td>
 </tr>
 <tr>
-  <th>Time:</th>                 <td>22:27:00</td>     <th>  Log-Likelihood:    </th> <td> -354.04</td>
+  <th>Time:</th>                 <td>00:14:37</td>     <th>  Log-Likelihood:    </th> <td> -354.04</td>
 </tr>
 <tr>
   <th>No. Observations:</th>      <td>   156</td>      <th>  AIC:               </th> <td>   712.1</td>
@@ -1155,10 +1166,10 @@ OLS_by_total_crimes(data, 'Graduation_Pct').summary()
   <th>Method:</th>             <td>Least Squares</td>  <th>  F-statistic:       </th> <td>   8.167</td>
 </tr>
 <tr>
-  <th>Date:</th>             <td>Thu, 30 Nov 2017</td> <th>  Prob (F-statistic):</th>  <td>0.00510</td>
+  <th>Date:</th>             <td>Fri, 01 Dec 2017</td> <th>  Prob (F-statistic):</th>  <td>0.00510</td>
 </tr>
 <tr>
-  <th>Time:</th>                 <td>22:27:00</td>     <th>  Log-Likelihood:    </th> <td> -435.64</td>
+  <th>Time:</th>                 <td>00:14:38</td>     <th>  Log-Likelihood:    </th> <td> -435.64</td>
 </tr>
 <tr>
   <th>No. Observations:</th>      <td>   112</td>      <th>  AIC:               </th> <td>   875.3</td>
@@ -1226,10 +1237,10 @@ OLS_by_total_crimes(data, 'College_Enrollment_Pct').summary()
   <th>Method:</th>                <td>Least Squares</td>     <th>  F-statistic:       </th> <td>   6.216</td>
 </tr>
 <tr>
-  <th>Date:</th>                <td>Thu, 30 Nov 2017</td>    <th>  Prob (F-statistic):</th>  <td>0.0138</td> 
+  <th>Date:</th>                <td>Fri, 01 Dec 2017</td>    <th>  Prob (F-statistic):</th>  <td>0.0138</td> 
 </tr>
 <tr>
-  <th>Time:</th>                    <td>22:27:01</td>        <th>  Log-Likelihood:    </th> <td> -644.82</td>
+  <th>Time:</th>                    <td>00:14:38</td>        <th>  Log-Likelihood:    </th> <td> -644.82</td>
 </tr>
 <tr>
   <th>No. Observations:</th>         <td>   142</td>         <th>  AIC:               </th> <td>   1294.</td>
@@ -1299,10 +1310,10 @@ OLS_by_crime_types(data, 'Level').summary()
   <th>Method:</th>             <td>Least Squares</td>  <th>  F-statistic:       </th> <td>   2.726</td>
 </tr>
 <tr>
-  <th>Date:</th>             <td>Thu, 30 Nov 2017</td> <th>  Prob (F-statistic):</th>  <td>0.0175</td> 
+  <th>Date:</th>             <td>Fri, 01 Dec 2017</td> <th>  Prob (F-statistic):</th>  <td>0.0175</td> 
 </tr>
 <tr>
-  <th>Time:</th>                 <td>22:27:01</td>     <th>  Log-Likelihood:    </th> <td> -152.80</td>
+  <th>Time:</th>                 <td>00:14:39</td>     <th>  Log-Likelihood:    </th> <td> -152.80</td>
 </tr>
 <tr>
   <th>No. Observations:</th>      <td>   100</td>      <th>  AIC:               </th> <td>   319.6</td>
@@ -1381,10 +1392,10 @@ OLS_by_crime_types(data, 'ACT_Score').summary()
   <th>Method:</th>             <td>Least Squares</td>  <th>  F-statistic:       </th> <td>   4.096</td>
 </tr>
 <tr>
-  <th>Date:</th>             <td>Thu, 30 Nov 2017</td> <th>  Prob (F-statistic):</th> <td>0.000875</td>
+  <th>Date:</th>             <td>Fri, 01 Dec 2017</td> <th>  Prob (F-statistic):</th> <td>0.000875</td>
 </tr>
 <tr>
-  <th>Time:</th>                 <td>22:27:01</td>     <th>  Log-Likelihood:    </th> <td> -287.35</td>
+  <th>Time:</th>                 <td>00:14:39</td>     <th>  Log-Likelihood:    </th> <td> -287.35</td>
 </tr>
 <tr>
   <th>No. Observations:</th>      <td>   131</td>      <th>  AIC:               </th> <td>   588.7</td>
@@ -1463,10 +1474,10 @@ OLS_by_crime_types(data, 'Graduation_Pct').summary()
   <th>Method:</th>             <td>Least Squares</td>  <th>  F-statistic:       </th> <td>   2.749</td>
 </tr>
 <tr>
-  <th>Date:</th>             <td>Thu, 30 Nov 2017</td> <th>  Prob (F-statistic):</th>  <td>0.0172</td> 
+  <th>Date:</th>             <td>Fri, 01 Dec 2017</td> <th>  Prob (F-statistic):</th>  <td>0.0172</td> 
 </tr>
 <tr>
-  <th>Time:</th>                 <td>22:27:01</td>     <th>  Log-Likelihood:    </th> <td> -356.51</td>
+  <th>Time:</th>                 <td>00:14:39</td>     <th>  Log-Likelihood:    </th> <td> -356.51</td>
 </tr>
 <tr>
   <th>No. Observations:</th>      <td>    92</td>      <th>  AIC:               </th> <td>   727.0</td>
@@ -1545,10 +1556,10 @@ OLS_by_crime_types(data, 'College_Enrollment_Pct').summary()
   <th>Method:</th>                <td>Least Squares</td>     <th>  F-statistic:       </th> <td>   3.750</td>
 </tr>
 <tr>
-  <th>Date:</th>                <td>Thu, 30 Nov 2017</td>    <th>  Prob (F-statistic):</th>  <td>0.00195</td>
+  <th>Date:</th>                <td>Fri, 01 Dec 2017</td>    <th>  Prob (F-statistic):</th>  <td>0.00195</td>
 </tr>
 <tr>
-  <th>Time:</th>                    <td>22:27:01</td>        <th>  Log-Likelihood:    </th> <td> -531.16</td>
+  <th>Time:</th>                    <td>00:14:39</td>        <th>  Log-Likelihood:    </th> <td> -531.16</td>
 </tr>
 <tr>
   <th>No. Observations:</th>         <td>   118</td>         <th>  AIC:               </th> <td>   1076.</td>
