@@ -89,7 +89,14 @@ All analysis code for this project is included in a single jupyter notebook:
 
 ### Overview of Data
 
-First, the counts of schools on different ratings or levels are plotted below.
+First, the counts of schools on different SQRP ratings and safety levels are plotted below. For the SQRP ratings, schools with higher numbers have better qualities. For the safety levels, schools with higher numbers have more responses with safer neighborhoods. **Because most of schools have very low safety levels (1~3), most parents and students are not satisfied with the neighborhood safety around the schools**
 
-<img src="data_analyze/output_5_1.png" width="45%"> <img src="data_analyze/output_6_1.png" width="45%">
+<img src="data_analyze/output_5_1.png" width="49%"> <img src="data_analyze/output_6_1.png" width="49%">
 
+Then, counts of schools with different performance variables are shown below. These plots can reflect the overall performances of Chicago high schools.
+
+<img src="data_analyze/output_8_1.png" width="49%"> <img src="data_analyze/output_8_2.png" width="49%">
+
+Last, the crime data are visualized below. Left is the counts histogram categoried by number of crimes. Most of neighborhoods nearby high schools have less than 3000 crime reports over the year (left). The right panel is the geographic plotting of the schools on the Chicago map, and the colors represent the number of crime reports. It demostrate a strong clusterring pattern.
+
+<img src="data_analyze/output_8_3.png" width="65%"> <img src="data_analyze/output_8_4.png" width="34%">
