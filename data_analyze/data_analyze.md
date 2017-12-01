@@ -24,6 +24,9 @@ import pandas as pd
 
 
 ```python
+# Latitudes and Longitudes of Chicago boundaries for map plots
+chicago = pd.read_csv('data/chicago_boundary.csv')
+
 #Import the data that has been prepared
 #Only part of column variables are needed
 data = pd.read_csv('data/data_table.csv', usecols=[
@@ -452,14 +455,16 @@ data.head(20)
 #2.1.1 Counts of schools by SQRP ratings (Level)
 ax = data.groupby(['Level']).size().plot(kind='bar')
 ax.set(xlabel="SQRP Rating", ylabel="Count")
+
+plt.figure(figsize=(7,7))
+plt.plot('Longitude', 'Latitude', data=chicago.loc[0:11350])
+plt.scatter(data.School_Longitude, data.School_Latitude, c=data.Level, cmap=plt.cm.get_cmap('cool'))
+plt.colorbar()
+plt.show()
 ```
 
 
-
-
-    [<matplotlib.text.Text at 0x7f1938028080>,
-     <matplotlib.text.Text at 0x7f193800e630>]
-
+![png](output_5_0.png)
 
 
 
@@ -471,14 +476,16 @@ ax.set(xlabel="SQRP Rating", ylabel="Count")
 #2.1.2 Counts of schools by survey safety levels
 ax = data.groupby(['Safety_Level']).size().plot(kind='bar')
 ax.set(xlabel="Safety Level", ylabel="Count")
+
+plt.figure(figsize=(7,7))
+plt.plot('Longitude', 'Latitude', data=chicago.loc[0:11350])
+plt.scatter(data.School_Longitude, data.School_Latitude, c=data.Safety_Level, cmap=plt.cm.get_cmap('cool'))
+plt.colorbar()
+plt.show()
 ```
 
 
-
-
-    [<matplotlib.text.Text at 0x7f1937f9bac8>,
-     <matplotlib.text.Text at 0x7f1938024be0>]
-
+![png](output_6_0.png)
 
 
 
@@ -492,16 +499,17 @@ Plot the counts of schools with different performance variables (ACT scores, Gra
 
 ```python
 data.hist(column='ACT_Score', grid=False)
-data.hist(column='Graduation_Pct', grid=False)
-data.hist(column='College_Enrollment_Pct', grid=False)
-data.hist(column='Total_Crimes', grid=False)
+
+plt.figure(figsize=(7,7))
+plt.plot('Longitude', 'Latitude', data=chicago.loc[0:11350])
+plt.scatter(data.School_Longitude, data.School_Latitude, c=data.ACT_Score, cmap=plt.cm.get_cmap('cool'))
+plt.colorbar()
+plt.show()
+
 ```
 
 
-
-
-    array([[<matplotlib.axes._subplots.AxesSubplot object at 0x7f1937cb41d0>]], dtype=object)
-
+![png](output_8_0.png)
 
 
 
@@ -509,15 +517,41 @@ data.hist(column='Total_Crimes', grid=False)
 
 
 
-![png](output_8_2.png)
+```python
+data.hist(column='Graduation_Pct', grid=False)
+
+plt.figure(figsize=(7,7))
+plt.plot('Longitude', 'Latitude', data=chicago.loc[0:11350])
+plt.scatter(data.School_Longitude, data.School_Latitude, c=data.Graduation_Pct, cmap=plt.cm.get_cmap('cool'))
+plt.colorbar()
+plt.show()
+```
+
+
+![png](output_9_0.png)
 
 
 
-![png](output_8_3.png)
+![png](output_9_1.png)
 
 
 
-![png](output_8_4.png)
+```python
+data.hist(column='College_Enrollment_Pct', grid=False)
+
+plt.figure(figsize=(7,7))
+plt.plot('Longitude', 'Latitude', data=chicago.loc[0:11350])
+plt.scatter(data.School_Longitude, data.School_Latitude, c=data.College_Enrollment_Pct, cmap=plt.cm.get_cmap('cool'))
+plt.colorbar()
+plt.show()
+```
+
+
+![png](output_10_0.png)
+
+
+
+![png](output_10_1.png)
 
 
 #### 2.3 Overview of crime data
@@ -536,6 +570,11 @@ cases['Crime_ID'].nunique()
     77863
 
 
+
+
+```python
+data.hist(column='Total_Crimes', grid=False)
+```
 
 Print the top ten schools with the smallest numbers of criminal cases (safest neighborhood)
 
@@ -765,8 +804,6 @@ The safety of school neighborhood displays a clustering pattern.
 
 
 ```python
-chicago = pd.read_csv('data/chicago_boundary.csv')
-#fig, ax = plt.subplots(1, 1, figsize=(40,40))
 plt.figure(figsize=(7,7))
 plt.plot('Longitude', 'Latitude', data=chicago.loc[0:11350])
 plt.scatter(data.School_Longitude, data.School_Latitude, c=data.Total_Crimes, cmap=plt.cm.get_cmap('cool'))
@@ -775,7 +812,7 @@ plt.show()
 ```
 
 
-![png](output_16_0.png)
+![png](output_19_0.png)
 
 
 ### 3 Regression for data correlation analysis
@@ -846,7 +883,7 @@ scatter_matrix(data[['Total_Crimes','ACT_Score','Graduation_Pct','College_Enroll
 
 
 
-![png](output_20_1.png)
+![png](output_23_1.png)
 
 
 #### 3.2 Scatter plots of survey safety levels on different crimes
@@ -867,19 +904,19 @@ data.plot(kind='scatter', x='Total_Homicides', y='Safety_Level')
 
 
 
-![png](output_22_1.png)
+![png](output_25_1.png)
 
 
 
-![png](output_22_2.png)
+![png](output_25_2.png)
 
 
 
-![png](output_22_3.png)
+![png](output_25_3.png)
 
 
 
-![png](output_22_4.png)
+![png](output_25_4.png)
 
 
 ### 3.3 Regression on total crimes
@@ -952,7 +989,7 @@ OLS_by_total_crimes(data, 'Level').summary()
 
 
 
-![png](output_24_1.png)
+![png](output_27_1.png)
 
 
 
@@ -1023,7 +1060,7 @@ OLS_by_total_crimes(data, 'Safety_Level').summary()
 
 
 
-![png](output_25_1.png)
+![png](output_28_1.png)
 
 
 
@@ -1094,7 +1131,7 @@ OLS_by_total_crimes(data, 'ACT_Score').summary()
 
 
 
-![png](output_26_1.png)
+![png](output_29_1.png)
 
 
 
@@ -1165,7 +1202,7 @@ OLS_by_total_crimes(data, 'Graduation_Pct').summary()
 
 
 
-![png](output_27_1.png)
+![png](output_30_1.png)
 
 
 
@@ -1236,7 +1273,7 @@ OLS_by_total_crimes(data, 'College_Enrollment_Pct').summary()
 
 
 
-![png](output_28_1.png)
+![png](output_31_1.png)
 
 
 #### 3.4 Multivariable regressions on different variables
