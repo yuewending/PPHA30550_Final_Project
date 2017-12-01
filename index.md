@@ -145,9 +145,9 @@ The pair-wise scatter plots are shown below for performance variables and the to
 
 Regression analysis with OLS method was used on the varible of total crimes. The plots and trend lines for the four performance variables are shown below. All of them display clear trends that higher crime rates will lower the performance.
 
-<img src="data_analyze/output_27_1.png" width="49%"> <img src="data_analyze/output_28_1.png" width="49%">
+<img src="data_analyze/output_27_1.png" width="49%"> <img src="data_analyze/output_29_1.png" width="49%">
 
-<img src="data_analyze/output_29_1.png" width="49%"> <img src="data_analyze/output_30_1.png" width="49%">
+<img src="data_analyze/output_30_1.png" width="49%"> <img src="data_analyze/output_31_1.png" width="49%">
 
 The statistics parameters are summarized in the table below. All the slope coeffients are negative and statistically significant (>95% probabilities that the true values are not zero).
 
