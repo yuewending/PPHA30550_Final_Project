@@ -9,7 +9,7 @@ Students’ decisions making process on future education is influenced by a comb
 
 ## Data Preparation
 
-The scripts that were used to prepare all data set are put in this folder, and data files are stored in the [`data`](https://github.com/yuewending/PPHA30550_Final_Project/tree/master/data) folder.
+The scripts that were used to prepare all data set are put in this folder, and data files are stored in the [`data`](data) folder.
 
 ### Performance Data of High Schools
 
@@ -85,6 +85,6 @@ Different data sets for school performances were merged by School IDs, and the n
 
 All analysis code for this project is included in a single jupyter notebook:
 
-[data_analyze.ipynb](https://github.com/yuewending/PPHA30550_Final_Project/tree/master/data_analyze.ipynb)
+[data_analyze.ipynb](data_analyze.ipynb)
 
 ### Overview of Data
