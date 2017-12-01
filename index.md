@@ -133,4 +133,6 @@ HIRSCH HS | 2.0 | 3.0 | 3362.0
 
 ### Scatter Matrix Analysis of Selected Variables
 
+The pair-wise scatter plots are shown below for performance variables and the total crime predictor. Strong correlations can be observed from the performance variables (ACT, Graudation and College enrollment). It implies that the three variables we selected are good indicator to assess the qualities of high schools, and their trends are in good agreement.
+
 <img src="data_analyze/output_20_1.png" width="90%">
