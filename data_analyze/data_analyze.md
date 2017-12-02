@@ -20,6 +20,10 @@ import statsmodels.regression.mixed_linear_model as sm_mlm
 import pandas as pd
 ```
 
+    /software/python-3.6.1-el6-x86_64+intel-16.0/lib/python3.6/site-packages/statsmodels/compat/pandas.py:56: FutureWarning: The pandas.core.datetools module is deprecated and will be removed in a future version. Please use the pandas.tseries module instead.
+      from pandas.core import datetools
+
+
 ### 2 Load data and overview
 
 
@@ -579,7 +583,7 @@ data.hist(column='Total_Crimes', grid=False)
 
 
 
-    array([[<matplotlib.axes._subplots.AxesSubplot object at 0x7f1935765198>]], dtype=object)
+    array([[<matplotlib.axes._subplots.AxesSubplot object at 0x7f71fc399da0>]], dtype=object)
 
 
 
@@ -874,22 +878,22 @@ scatter_matrix(data[['Total_Crimes','ACT_Score','Graduation_Pct','College_Enroll
 
 
 
-    array([[<matplotlib.axes._subplots.AxesSubplot object at 0x7f1937554e48>,
-            <matplotlib.axes._subplots.AxesSubplot object at 0x7f193737e3c8>,
-            <matplotlib.axes._subplots.AxesSubplot object at 0x7f19374085f8>,
-            <matplotlib.axes._subplots.AxesSubplot object at 0x7f19372cf748>],
-           [<matplotlib.axes._subplots.AxesSubplot object at 0x7f19372ab4a8>,
-            <matplotlib.axes._subplots.AxesSubplot object at 0x7f19372ab4e0>,
-            <matplotlib.axes._subplots.AxesSubplot object at 0x7f193717e198>,
-            <matplotlib.axes._subplots.AxesSubplot object at 0x7f193716c908>],
-           [<matplotlib.axes._subplots.AxesSubplot object at 0x7f1934fb5898>,
-            <matplotlib.axes._subplots.AxesSubplot object at 0x7f1934f73ba8>,
-            <matplotlib.axes._subplots.AxesSubplot object at 0x7f1934f04208>,
-            <matplotlib.axes._subplots.AxesSubplot object at 0x7f1934e94588>],
-           [<matplotlib.axes._subplots.AxesSubplot object at 0x7f1934dd0048>,
-            <matplotlib.axes._subplots.AxesSubplot object at 0x7f1934dad710>,
-            <matplotlib.axes._subplots.AxesSubplot object at 0x7f1934d17e48>,
-            <matplotlib.axes._subplots.AxesSubplot object at 0x7f1934d01128>]], dtype=object)
+    array([[<matplotlib.axes._subplots.AxesSubplot object at 0x7f71fc3265f8>,
+            <matplotlib.axes._subplots.AxesSubplot object at 0x7f71fc3990b8>,
+            <matplotlib.axes._subplots.AxesSubplot object at 0x7f71fc3607f0>,
+            <matplotlib.axes._subplots.AxesSubplot object at 0x7f71fca18550>],
+           [<matplotlib.axes._subplots.AxesSubplot object at 0x7f72034cfdd8>,
+            <matplotlib.axes._subplots.AxesSubplot object at 0x7f72034edf98>,
+            <matplotlib.axes._subplots.AxesSubplot object at 0x7f71fc92fcf8>,
+            <matplotlib.axes._subplots.AxesSubplot object at 0x7f71fc583128>],
+           [<matplotlib.axes._subplots.AxesSubplot object at 0x7f71fc8af1d0>,
+            <matplotlib.axes._subplots.AxesSubplot object at 0x7f71fc3274a8>,
+            <matplotlib.axes._subplots.AxesSubplot object at 0x7f71fc8f34e0>,
+            <matplotlib.axes._subplots.AxesSubplot object at 0x7f71fc8f1ef0>],
+           [<matplotlib.axes._subplots.AxesSubplot object at 0x7f71fc5e4940>,
+            <matplotlib.axes._subplots.AxesSubplot object at 0x7f71fbda1048>,
+            <matplotlib.axes._subplots.AxesSubplot object at 0x7f71fbd54780>,
+            <matplotlib.axes._subplots.AxesSubplot object at 0x7f71fbd35a20>]], dtype=object)
 
 
 
@@ -910,7 +914,7 @@ data.plot(kind='scatter', x='Total_Homicides', y='Safety_Level')
 
 
 
-    <matplotlib.axes._subplots.AxesSubplot at 0x7f19356dc128>
+    <matplotlib.axes._subplots.AxesSubplot at 0x7f71fbafb208>
 
 
 
@@ -956,7 +960,7 @@ OLS_by_total_crimes(data, 'Level').summary()
   <th>Date:</th>             <td>Fri, 01 Dec 2017</td> <th>  Prob (F-statistic):</th>  <td>0.00219</td>
 </tr>
 <tr>
-  <th>Time:</th>                 <td>00:14:36</td>     <th>  Log-Likelihood:    </th> <td> -189.92</td>
+  <th>Time:</th>                 <td>19:46:41</td>     <th>  Log-Likelihood:    </th> <td> -189.92</td>
 </tr>
 <tr>
   <th>No. Observations:</th>      <td>   122</td>      <th>  AIC:               </th> <td>   383.8</td>
@@ -1027,7 +1031,7 @@ OLS_by_total_crimes(data, 'Safety_Level').summary()
   <th>Date:</th>             <td>Fri, 01 Dec 2017</td> <th>  Prob (F-statistic):</th>  <td>0.0189</td> 
 </tr>
 <tr>
-  <th>Time:</th>                 <td>00:14:37</td>     <th>  Log-Likelihood:    </th> <td> -173.20</td>
+  <th>Time:</th>                 <td>19:46:42</td>     <th>  Log-Likelihood:    </th> <td> -173.20</td>
 </tr>
 <tr>
   <th>No. Observations:</th>      <td>   148</td>      <th>  AIC:               </th> <td>   350.4</td>
@@ -1098,7 +1102,7 @@ OLS_by_total_crimes(data, 'ACT_Score').summary()
   <th>Date:</th>             <td>Fri, 01 Dec 2017</td> <th>  Prob (F-statistic):</th>  <td>0.00524</td>
 </tr>
 <tr>
-  <th>Time:</th>                 <td>00:14:37</td>     <th>  Log-Likelihood:    </th> <td> -354.04</td>
+  <th>Time:</th>                 <td>19:46:42</td>     <th>  Log-Likelihood:    </th> <td> -354.04</td>
 </tr>
 <tr>
   <th>No. Observations:</th>      <td>   156</td>      <th>  AIC:               </th> <td>   712.1</td>
@@ -1169,7 +1173,7 @@ OLS_by_total_crimes(data, 'Graduation_Pct').summary()
   <th>Date:</th>             <td>Fri, 01 Dec 2017</td> <th>  Prob (F-statistic):</th>  <td>0.00510</td>
 </tr>
 <tr>
-  <th>Time:</th>                 <td>00:14:38</td>     <th>  Log-Likelihood:    </th> <td> -435.64</td>
+  <th>Time:</th>                 <td>19:46:43</td>     <th>  Log-Likelihood:    </th> <td> -435.64</td>
 </tr>
 <tr>
   <th>No. Observations:</th>      <td>   112</td>      <th>  AIC:               </th> <td>   875.3</td>
@@ -1240,7 +1244,7 @@ OLS_by_total_crimes(data, 'College_Enrollment_Pct').summary()
   <th>Date:</th>                <td>Fri, 01 Dec 2017</td>    <th>  Prob (F-statistic):</th>  <td>0.0138</td> 
 </tr>
 <tr>
-  <th>Time:</th>                    <td>00:14:38</td>        <th>  Log-Likelihood:    </th> <td> -644.82</td>
+  <th>Time:</th>                    <td>19:46:44</td>        <th>  Log-Likelihood:    </th> <td> -644.82</td>
 </tr>
 <tr>
   <th>No. Observations:</th>         <td>   142</td>         <th>  AIC:               </th> <td>   1294.</td>
@@ -1313,7 +1317,7 @@ OLS_by_crime_types(data, 'Level').summary()
   <th>Date:</th>             <td>Fri, 01 Dec 2017</td> <th>  Prob (F-statistic):</th>  <td>0.0175</td> 
 </tr>
 <tr>
-  <th>Time:</th>                 <td>00:14:39</td>     <th>  Log-Likelihood:    </th> <td> -152.80</td>
+  <th>Time:</th>                 <td>19:46:44</td>     <th>  Log-Likelihood:    </th> <td> -152.80</td>
 </tr>
 <tr>
   <th>No. Observations:</th>      <td>   100</td>      <th>  AIC:               </th> <td>   319.6</td>
@@ -1395,7 +1399,7 @@ OLS_by_crime_types(data, 'ACT_Score').summary()
   <th>Date:</th>             <td>Fri, 01 Dec 2017</td> <th>  Prob (F-statistic):</th> <td>0.000875</td>
 </tr>
 <tr>
-  <th>Time:</th>                 <td>00:14:39</td>     <th>  Log-Likelihood:    </th> <td> -287.35</td>
+  <th>Time:</th>                 <td>19:46:44</td>     <th>  Log-Likelihood:    </th> <td> -287.35</td>
 </tr>
 <tr>
   <th>No. Observations:</th>      <td>   131</td>      <th>  AIC:               </th> <td>   588.7</td>
@@ -1477,7 +1481,7 @@ OLS_by_crime_types(data, 'Graduation_Pct').summary()
   <th>Date:</th>             <td>Fri, 01 Dec 2017</td> <th>  Prob (F-statistic):</th>  <td>0.0172</td> 
 </tr>
 <tr>
-  <th>Time:</th>                 <td>00:14:39</td>     <th>  Log-Likelihood:    </th> <td> -356.51</td>
+  <th>Time:</th>                 <td>19:46:44</td>     <th>  Log-Likelihood:    </th> <td> -356.51</td>
 </tr>
 <tr>
   <th>No. Observations:</th>      <td>    92</td>      <th>  AIC:               </th> <td>   727.0</td>
@@ -1559,7 +1563,7 @@ OLS_by_crime_types(data, 'College_Enrollment_Pct').summary()
   <th>Date:</th>                <td>Fri, 01 Dec 2017</td>    <th>  Prob (F-statistic):</th>  <td>0.00195</td>
 </tr>
 <tr>
-  <th>Time:</th>                    <td>00:14:39</td>        <th>  Log-Likelihood:    </th> <td> -531.16</td>
+  <th>Time:</th>                    <td>19:46:44</td>        <th>  Log-Likelihood:    </th> <td> -531.16</td>
 </tr>
 <tr>
   <th>No. Observations:</th>         <td>   118</td>         <th>  AIC:               </th> <td>   1076.</td>
@@ -1616,3 +1620,85 @@ OLS_by_crime_types(data, 'College_Enrollment_Pct').summary()
 </table>
 
 
+
+### 4 Geographic Spatial Analysis of Data
+
+#### Average SQRP ratings in each school attendance district
+
+
+```python
+import geopandas as gpd
+from shapely.geometry import Point
+
+shp = gpd.GeoDataFrame.from_file("geo/geo_export_f9b736ef-91fe-4ac9-a892-0573a8100ff0.shp")
+shp.crs = {'init': 'epsg:4326'}
+```
+
+
+```python
+schools = data[['School_Longitude', 'School_Latitude', 'Level']].dropna(axis=0, how="any") \
+    .rename(columns={'School_Longitude': 'lon', 'School_Latitude': 'lat'})
+    
+geo_schools = gpd.GeoDataFrame({"geometry": schools[["lon","lat"]] \
+    .apply(lambda row: Point(row["lon"], row["lat"]), axis=1), "SQRP": schools["Level"]})
+geo_schools.crs = {'init': 'epsg:4326'}
+shp_schools = gpd.tools.sjoin(geo_schools, shp, how="right", op='intersects')
+
+avg_sqrp = shp_schools.groupby(['school_nm'])['SQRP'].mean().to_frame(name="Average SQRP").reset_index()
+shp_sqrp = pd.merge(shp, avg_sqrp, on="school_nm", how="right")
+fig, ax = plt.subplots(1, figsize=(6,7))
+shp_sqrp.plot(ax=ax, column='Average SQRP', cmap='YlGn', alpha=1, legend=True)
+ax.set_title("Averaged SQRP Rating of School Attendance Districts (SY16)")
+```
+
+
+
+
+    <matplotlib.text.Text at 0x7f719af93780>
+
+
+
+
+![png](output_39_1.png)
+
+
+#### Total number of crimes (SY2016) in each school attendance district
+
+
+```python
+loc_crimes = pd.read_csv('data/refined_crime_sy2016.csv', usecols=['Latitude','Longitude']) \
+    .dropna(axis=0, how="any") \
+    .rename(columns={'Longitude': 'lon', 'Latitude': 'lat'})
+    
+geo_crimes = gpd.GeoDataFrame({"geometry": loc_crimes[["lon","lat"]] \
+    .apply(lambda row: Point(row["lon"], row["lat"]), axis=1)})
+geo_crimes.crs = {'init': 'epsg:4326'}
+shp_crimes = gpd.tools.sjoin(geo_crimes, shp, how="right", op='intersects')
+
+ncrimes = shp_crimes.groupby(['school_nm']).size().to_frame(name="Count of Crimes").reset_index()
+shp_crime = pd.merge(shp, ncrimes, on="school_nm", how="right")
+
+```
+
+
+```python
+fig, ax = plt.subplots(1, figsize=(6,7))
+shp_crime.plot(ax=ax, column='Count of Crimes', cmap='Reds', alpha=1, legend=True, vmax=15000)
+ax.set_title("Total Number of Crimes in School Attendance Districts (SY16)")
+```
+
+
+
+
+    <matplotlib.text.Text at 0x7f719ce24b38>
+
+
+
+
+![png](output_42_1.png)
+
+
+
+```python
+
+```
