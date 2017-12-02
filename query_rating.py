@@ -14,7 +14,7 @@ with open("data/school_id.csv", "r") as f:
     schools = f.read().split('\n')
 
 # List for converting Levels text to number
-levels = ['None', 'Level 1', 'Level 1+', 'Level 2', 'Level 2+', 'Level 3']
+levels = ['None', 'Level 3', 'Level 2', 'Level 2+', 'Level 1', 'Level 1+']
 
 # Build empty lists
 data_id = []
@@ -37,6 +37,7 @@ for id in schools:
     level = span.text
     
     if level not in levels:
+        print("ERR: " + level)
         continue
     
     ilevel = levels.index(level)

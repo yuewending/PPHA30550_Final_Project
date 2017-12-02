@@ -5,8 +5,21 @@ schools = pd.read_csv('data/refined_progress.csv')
 
 crimes_all = pd.read_csv('data/school_crimes.csv')
 
+
 crimes_by_school = crimes_all.groupby(['School_ID']).size()
 crimes = pd.DataFrame({'School_ID':crimes_by_school.index, 'Total_Crimes':crimes_by_school.values})
+schools = schools.merge(crimes, how='outer', on=['School_ID'])
+
+crimes_by_school = crimes_all[crimes_all['Crime_Type']==0].groupby(['School_ID']).size()
+crimes = pd.DataFrame({'School_ID':crimes_by_school.index, 'Total_Thefts':crimes_by_school.values})
+schools = schools.merge(crimes, how='outer', on=['School_ID'])
+
+crimes_by_school = crimes_all[crimes_all['Crime_Type']==1].groupby(['School_ID']).size()
+crimes = pd.DataFrame({'School_ID':crimes_by_school.index, 'Total_Batteries':crimes_by_school.values})
+schools = schools.merge(crimes, how='outer', on=['School_ID'])
+
+crimes_by_school = crimes_all[crimes_all['Crime_Type']==4].groupby(['School_ID']).size()
+crimes = pd.DataFrame({'School_ID':crimes_by_school.index, 'Total_Assaults':crimes_by_school.values})
 schools = schools.merge(crimes, how='outer', on=['School_ID'])
 
 crimes_by_school = crimes_all[crimes_all['Crime_Type']==7].groupby(['School_ID']).size()
